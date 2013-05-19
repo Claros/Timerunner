@@ -55,7 +55,7 @@ public class Player
 	/**
 	 * Update.
 	 *
-	 * @param gc the gc
+	 * @param gc the game container
 	 * @param mapWidth the map width
 	 * @param mapHeight the map height
 	 * @param delta the delta

@@ -49,7 +49,6 @@ public abstract class GlobalState extends BasicGameState
 			case Input.KEY_ESCAPE :
 				getGraphics().copyArea(GlobalState.screen, 0, 0);
 				pauseState(this.getID(), PauseMenuState.ID, new FadeOutTransition(new Color (0.2f, 0.2f, 0.2f, 0.5f)), new FadeInTransition(new Color (0.2f, 0.2f, 0.2f, 0.5f)));
-				//game.enterState(PauseMenuState.ID);
 			break;
 			// Touche F3, active/desactive le debug
 			case Input.KEY_F3 :

@@ -19,7 +19,7 @@ public class Map extends TiledMap
 	/**
 	 * Instantiates a new map.
 	 *
-	 * @param ref the ref
+	 * @param ref the map path
 	 * @throws SlickException the slick exception
 	 */
 	public Map(String ref) throws SlickException 
@@ -31,7 +31,7 @@ public class Map extends TiledMap
 		{
 		      for (int y = 0; y < height; y++)
 		      {
-		            for (int l = 0; l < 2; l++)
+		            for (int l = 0; l < getLayerCount(); l++)
 		            {
 		                int id = getTileId(x, y, l);
 		                if (id != 0)
