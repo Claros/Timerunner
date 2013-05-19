@@ -33,8 +33,8 @@ public class GameState extends GlobalState
 	{
 		super.init(container, game);
 		this.shoot = new Sound("res/shoot.wav");
-
-		player = new Player(50, 3100, 32, 48, "pics/vx_chara02_c.png");
+		// Spawn : 50, 3100
+		player = new Player(1875, 1415, 32, 48, "pics/vx_chara02_c.png");
 		map = new Map("res/map_moyen_age_exterieur.tmx");
 		mapWidth = map.getWidth() * map.getTileWidth(); // Map size = Tile Size * number of Tiles
 		mapHeight = map.getHeight() * map.getTileHeight();
