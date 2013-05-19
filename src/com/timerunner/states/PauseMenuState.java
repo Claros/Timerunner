@@ -18,6 +18,9 @@ import org.newdawn.slick.Image;
 
 import com.timerunner.Game;
 
+/**
+ * The Class PauseMenuState.
+ */
 public class PauseMenuState extends GlobalState implements ComponentListener 
 {
 	public static final int ID = 2;
@@ -27,6 +30,9 @@ public class PauseMenuState extends GlobalState implements ComponentListener
 	private MouseOverArea play;
 	private MouseOverArea restart;
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.gui.ComponentListener#componentActivated(org.newdawn.slick.gui.AbstractComponent)
+	 */
 	@Override
 	public void componentActivated(AbstractComponent source) 
 	{
@@ -45,6 +51,9 @@ public class PauseMenuState extends GlobalState implements ComponentListener
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.timerunner.states.GlobalState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
+	 */
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException 
 	{
@@ -63,6 +72,9 @@ public class PauseMenuState extends GlobalState implements ComponentListener
 		restart.setMouseOverColor(new Color(0.9f,0.9f,0.9f,1f));
 	}
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.state.GameState#render(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
+	 */
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException 
 	{
@@ -80,18 +92,27 @@ public class PauseMenuState extends GlobalState implements ComponentListener
 		g.drawString("   Pause   ", 350, 100);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.state.GameState#update(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, int)
+	 */
 	@Override
 	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException 
 	{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.timerunner.states.GlobalState#getID()
+	 */
 	@Override
 	public int getID() 
 	{
 		return ID;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.timerunner.states.GlobalState#getGraphics()
+	 */
 	@Override
 	public Graphics getGraphics() {
 		// TODO Auto-generated method stub

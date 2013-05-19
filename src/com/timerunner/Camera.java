@@ -4,15 +4,28 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.tiled.TiledMap;
  
-public class Camera {
- 
+/**
+ * The Class Camera.
+ */
+public class Camera 
+{
+	/** The trans y. */
 	private int transX, transY;
+	/** The map height. */
 	private int mapWidth, mapHeight;
-	private Rectangle viewPort; 
+	
 	/* We define a rectangle with the size of our screen, this represents our camera
 	 * "range", so everything inside the viewport will be drawn on the screen, we will
 	 * be able to move this rectangle across the map. */
+	private Rectangle viewPort; 
  
+	/**
+	 * Instantiates a new camera.
+	 *
+	 * @param map the map
+	 * @param mapWidth the map width
+	 * @param mapHeight the map height
+	 */
 	public Camera(TiledMap map, int mapWidth, int mapHeight) 
 	{
 		transX = 0;
@@ -22,6 +35,12 @@ public class Camera {
 		this.mapHeight = mapHeight;
 	}
  
+	/**
+	 * Translate.
+	 *
+	 * @param g the graphics
+	 * @param entity the entity
+	 */
 	public void translate (Graphics g, Player entity) 
 	{
 		if(entity.getX()-Game.WIDTH/2+16 < 0)
@@ -55,11 +74,21 @@ public class Camera {
     	viewPort.setY(-transY);
 	}
 	
+	/**
+	 * Gets the trans x.
+	 *
+	 * @return the trans x
+	 */
 	public int getTransX()
 	{
 		return this.transX;
 	}
 	
+	/**
+	 * Gets the trans y.
+	 *
+	 * @return the trans y
+	 */
 	public int getTransY()
 	{
 		return this.transY;

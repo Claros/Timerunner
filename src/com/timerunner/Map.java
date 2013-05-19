@@ -7,18 +7,25 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.tiled.TiledMap;
 
+/**
+ * The Class Map.
+ */
 public class Map extends TiledMap
 {
-	private boolean blocked[][]; //le tableau des tiles bloquantes = no go areas !!
+	
+	/** The blocked tile. */
 	private ArrayList<Rectangle> blockedTile;
-	//private GameState game;
 	 
+	/**
+	 * Instantiates a new map.
+	 *
+	 * @param ref the ref
+	 * @throws SlickException the slick exception
+	 */
 	public Map(String ref) throws SlickException 
 	{
-		super(ref);//envoie à TiledMap l'adresse du fichier .tmx
-		//this.game = game;
-		/*****On récupère les infos sur les no go areas ! *****/
-		blocked = new boolean[width][height];
+		//envoie à TiledMap l'adresse du fichier .tmx
+		super(ref);
 		blockedTile = new ArrayList<Rectangle>();
 		for (int x = 0; x < width; x++)
 		{
@@ -33,16 +40,19 @@ public class Map extends TiledMap
 		                	if (b.equals("false")) 
 		                	{
 		                		blockedTile.add(new Rectangle(x*32, y*32, 32, 32));
-		                		blocked[x][y] = true;
 		                	} 
 		                }
 		            }
 		       }
-		} // fin du FOR*/
-		blocked[0][0] = true;
+		}
 		
 	}
 	
+	/**
+	 * Draw rect.
+	 *
+	 * @param g the graphics
+	 */
 	public void drawRect(Graphics g)
 	{
 		for (Rectangle r : blockedTile)
@@ -51,6 +61,12 @@ public class Map extends TiledMap
 		}
 	}
 	
+	/**
+	 * Checks if is tile blocked.
+	 *
+	 * @param rPlayer the player
+	 * @return true, if tile is blocked
+	 */
 	public boolean isTileBlocked(Rectangle rPlayer) 
 	{ 
 		for (Rectangle r : blockedTile)
@@ -62,9 +78,4 @@ public class Map extends TiledMap
 		}
 		return false;
 	}
-	
-//	public boolean isPixelBlocked(final int x, final int y)
-//	{
-//		return this.isTileBlocked(Math.round(x/32), Math.round(y/32));
-//	}
 }

@@ -16,6 +16,9 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 
+/**
+ * The Class StartMenuState.
+ */
 public class StartMenuState extends BasicGameState implements ComponentListener 
 {
 	public static final int ID = 0;
@@ -25,6 +28,9 @@ public class StartMenuState extends BasicGameState implements ComponentListener
 	private MouseOverArea quit;
 	private MouseOverArea play;
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.gui.ComponentListener#componentActivated(org.newdawn.slick.gui.AbstractComponent)
+	 */
 	@Override
 	public void componentActivated(AbstractComponent source) 
 	{
@@ -43,6 +49,9 @@ public class StartMenuState extends BasicGameState implements ComponentListener
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.state.GameState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
+	 */
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException 
 	{
@@ -57,6 +66,9 @@ public class StartMenuState extends BasicGameState implements ComponentListener
 		play.setMouseOverColor(new Color(0.9f,0.9f,0.9f,1f));
 	}
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.state.GameState#render(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
+	 */
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException 
 	{
@@ -65,12 +77,18 @@ public class StartMenuState extends BasicGameState implements ComponentListener
 		g.drawString("Time Runner", 350, 100);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.state.GameState#update(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, int)
+	 */
 	@Override
 	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException 
 	{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.state.BasicGameState#getID()
+	 */
 	@Override
 	public int getID() 
 	{

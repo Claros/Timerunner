@@ -8,26 +8,31 @@ import org.newdawn.slick.state.StateBasedGame;
 import com.timerunner.states.*;
  
 /**
- * Classe principale
- * 
+ * Classe principale.
+ *
  * @author ASTIER Naji & ROBIN Yohann
  */
 public class Game extends StateBasedGame
 { 
-	/** The container holding the game */
+	/** The Constant WIDTH. */
     public final static int WIDTH = 800;
+    /** The Constant HEIGHT. */
     public final static int HEIGHT = 600;
+    /** The debug. */
     public static boolean DEBUG = true;
+    /** The container holding the game. */
     public static AppGameContainer container;
  
 	/**
-	 * Nouvelle fenêtre
-	 * @return 
+	 * Nouvelle fenêtre.
 	 */
 	public Game() {
 		super("Time Runner");
 	}
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.state.StateBasedGame#initStatesList(org.newdawn.slick.GameContainer)
+	 */
 	@Override
 	public void initStatesList(GameContainer arg0) throws SlickException 
 	{
@@ -37,10 +42,10 @@ public class Game extends StateBasedGame
 	}
  
 	/**
-	 * Programme principal
-	 * 
+	 * Programme principal.
+	 *
 	 * @param argv The arguments passed into our test
- 	 */
+	 */
 	public static void main(String[] argv) 
 	{
 		try 

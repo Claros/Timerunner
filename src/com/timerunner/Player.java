@@ -9,6 +9,9 @@ import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
 
+/**
+ * The Class Player.
+ */
 public class Player 
 {
 	protected Vector2f pos; // Vector contains a value with components x &amp; y
@@ -19,6 +22,16 @@ public class Player
     private String direction = "bas";
     private boolean isRunning = false;
  
+	/**
+	 * Instantiates a new player.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param width the width
+	 * @param height the height
+	 * @param sprite the sprite
+	 * @throws SlickException the slick exception
+	 */
 	public Player(float x, float y, int width, int height, String sprite) throws SlickException 
 	{
 		this.pos = new Vector2f(x,y);
@@ -39,6 +52,15 @@ public class Player
 		};
 	}
  
+	/**
+	 * Update.
+	 *
+	 * @param gc the gc
+	 * @param mapWidth the map width
+	 * @param mapHeight the map height
+	 * @param delta the delta
+	 * @param map the map
+	 */
 	public void update(GameContainer gc, int mapWidth, int mapHeight, int delta, Map map) 
 	{
 		Vector2f trans = new Vector2f(0, 0);
@@ -99,6 +121,9 @@ public class Player
 		}
 	}
  
+	/**
+	 * Render.
+	 */
 	public void render() 
 	{
 		if(isRunning)
@@ -140,42 +165,62 @@ public class Player
 	}
  
 	// Getters and Setters
+	/**
+	 * Gets the pos.
+	 *
+	 * @return the pos
+	 */
 	public Vector2f getPos() 
 	{
 		return this.pos;
 	}
  
+	/**
+	 * Gets the x.
+	 *
+	 * @return the x
+	 */
 	public float getX() 
 	{
 		return this.pos.x;
 	}
  
+	/**
+	 * Gets the y.
+	 *
+	 * @return the y
+	 */
 	public float getY() {
 		return this.pos.y;
 	}
  
+	/**
+	 * Sets the pos.
+	 *
+	 * @param pos the new pos
+	 */
 	public void setPos(Vector2f pos) 
 	{
 		this.pos = pos;
 	}
  
+	/**
+	 * Gets the box.
+	 *
+	 * @return the box
+	 */
 	public Rectangle getBox() 
 	{
 		return this.box;
 	}
  
+	/**
+	 * Sets the box.
+	 *
+	 * @param box the new box
+	 */
 	public void setBox(Rectangle box) 
 	{
 		this.box = box;
 	}
- 
-	/*public Image getSprite() 
-	{
-		return sprite;
-	}
- 
-	public void setSprite(Image sprite) 
-	{
-		this.sprite = sprite;
-	}*/
 }

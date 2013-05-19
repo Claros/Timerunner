@@ -11,6 +11,9 @@ import com.timerunner.Game;
 import com.timerunner.Map;
 import com.timerunner.Player;
 
+/**
+ * The Class GameState.
+ */
 public class GameState extends GlobalState
 {
 	public static final int ID = 1;
@@ -22,6 +25,9 @@ public class GameState extends GlobalState
     private Map map;
     private Graphics renderGraphics;
 
+	/* (non-Javadoc)
+	 * @see com.timerunner.states.GlobalState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
+	 */
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException 
 	{
@@ -35,6 +41,9 @@ public class GameState extends GlobalState
 		camera = new Camera(map, mapWidth, mapHeight);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.state.GameState#render(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
+	 */
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException 
 	{
@@ -52,12 +61,18 @@ public class GameState extends GlobalState
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.state.GameState#update(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, int)
+	 */
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException 
 	{
 		player.update(container, mapWidth, mapHeight, delta, map);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.timerunner.states.GlobalState#getID()
+	 */
 	@Override
 	public int getID() 
 	{
@@ -65,6 +80,8 @@ public class GameState extends GlobalState
 	}
 
 	/**
+	 * Gets the shoot.
+	 *
 	 * @return the shoot
 	 */
 	public Sound getShoot() {
@@ -72,12 +89,17 @@ public class GameState extends GlobalState
 	}
 
 	/**
+	 * Sets the shoot.
+	 *
 	 * @param shoot the shoot to set
 	 */
 	public void setShoot(Sound shoot) {
 		this.shoot = shoot;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.timerunner.states.GlobalState#getGraphics()
+	 */
 	@Override
 	public Graphics getGraphics()
 	{
