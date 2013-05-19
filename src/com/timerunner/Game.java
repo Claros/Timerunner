@@ -8,9 +8,9 @@ import org.newdawn.slick.state.StateBasedGame;
 import com.timerunner.states.*;
  
 /**
- * Test des fonctions d'input
+ * Classe principale
  * 
- * @author kevin
+ * @author ASTIER Naji & ROBIN Yohann
  */
 public class Game extends StateBasedGame
 { 
