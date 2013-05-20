@@ -31,7 +31,7 @@ public class Map extends TiledMap
 		{
 		      for (int y = 0; y < height; y++)
 		      {
-		            for (int l = 0; l < getLayerCount(); l++)
+		            for (int l = 0; l < getLayerCount()-1; l++)
 		            {
 		                int id = getTileId(x, y, l);
 		                if (id != 0)
