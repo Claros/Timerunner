@@ -1,15 +1,21 @@
 package com.timerunner;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
+
+import com.timerunner.states.GameState;
 
 /**
  * The Class Player.
  */
 public class Player extends Entity
 { 
+	private Entity entityContact;
+	
 	/**
 	 * Instantiates a new player.
 	 *
@@ -20,9 +26,12 @@ public class Player extends Entity
 	 * @param sprite the sprite
 	 * @throws SlickException the slick exception
 	 */
-	public Player(float x, float y, int width, int height, String sprite, int spriteX, int spriteY) throws SlickException 
+	public Player(float x, float y, int width, int height, String sprite, int spriteX, int spriteY, String pName) throws SlickException 
 	{
-		super(x, y, width, height, sprite, spriteX, spriteY);
+		super(x, y, width, height, sprite, spriteX, spriteY, pName);
+		super.statLife = 30;
+		super.statStrength = 10;
+		super.statDefense = 10;
 	}
  
 	/**
@@ -42,34 +51,53 @@ public class Player extends Entity
 		setRunning(false);
 		float speed = 0.15f;
      
-    	if(input.isKeyDown(Input.KEY_RIGHT))
+    	if(input.isKeyDown(Config.KEY_RIGHT.getValue()))
     	{
     		trans.x= speed * delta;
     		setRunning(true);
 			setDirection("droite");
     	}
      
-    	if(input.isKeyDown(Input.KEY_LEFT))
+    	if(input.isKeyDown(Config.KEY_LEFT.getValue()))
     	{
     		trans.x= -speed * delta;
     		setRunning(true);
     		setDirection("gauche");
     	}
  
-    	if(input.isKeyDown(Input.KEY_UP))
+    	if(input.isKeyDown(Config.KEY_UP.getValue()))
     	{//Delta is used to move things on a frame rate independent way
     		trans.y = -speed * delta;
     		setRunning(true);
     		setDirection("haut");
     	}
      
-    	if(input.isKeyDown(Input.KEY_DOWN))
+    	if(input.isKeyDown(Config.KEY_DOWN.getValue()))
     	{
     		trans.y = speed * delta;
     		setRunning(true);
     		setDirection("bas");
     	}
     	
-    	moveEntity(trans, mapWidth, mapHeight, map);
+    	entityContact = moveEntity(trans, mapWidth, mapHeight, map);
+	}
+	
+	public Entity getContact()
+	{
+		return entityContact;
+	}
+	
+	public Entity isEntityTalkable()
+	{
+		ArrayList<Entity> entities = new ArrayList<Entity> ( GameState.getCharacters());
+		entities.remove(this);
+		for (Entity e : entities)
+		{
+			if (hitbox.intersects(e.getBox()))
+			{
+				return e;
+			}
+		}
+		return null;
 	}
 }

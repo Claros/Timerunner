@@ -19,7 +19,7 @@ public class Game extends StateBasedGame
     /** The Constant HEIGHT. */
     public final static int HEIGHT = 600;
     /** The debug. */
-    public static boolean DEBUG = true;
+    public static boolean DEBUG = false;
     /** The container holding the game. */
     public static AppGameContainer container;
  
@@ -48,6 +48,7 @@ public class Game extends StateBasedGame
 	 */
 	public static void main(String[] argv) 
 	{
+		Config.init();
 		try 
 		{
 			container = new AppGameContainer(new Game());
@@ -55,10 +56,7 @@ public class Game extends StateBasedGame
 			container.setTargetFrameRate(60);
 			container.setMinimumLogicUpdateInterval(20);
 			container.setVSync(true);
-			if (DEBUG)
-			{
-				container.setShowFPS(true);
-			}
+			container.setShowFPS(DEBUG);
 			container.start();
 		} catch (SlickException e) 
 		{

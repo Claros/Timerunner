@@ -1,6 +1,7 @@
 package com.timerunner;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
@@ -15,7 +16,7 @@ import com.timerunner.states.GameState;
 /**
  * The Class Player.
  */
-public abstract class Entity
+public abstract class Entity implements Comparable<Entity>
 {
 	protected Vector2f pos; // Vector contains a value with components x &amp; y
 	protected Rectangle box; // Vector contains a value with components x &amp; y
@@ -25,6 +26,13 @@ public abstract class Entity
     private Image[] repos;
     private String direction = "bas";
     private boolean isRunning = false;
+    private Entity entityColliding;
+	private HashMap<String,String[]> aDialogs;
+	
+	protected int statStrength;
+	protected int statLife;
+	protected int statDefense;
+	private String name;
  
 	/**
 	 * Instantiates a new player.
@@ -36,7 +44,7 @@ public abstract class Entity
 	 * @param sprite the sprite
 	 * @throws SlickException the slick exception
 	 */
-	public Entity(float x, float y, int width, int height, String sprite, int spriteX, int spriteY) throws SlickException 
+	public Entity(float x, float y, int width, int height, String sprite, int spriteX, int spriteY, String pName) throws SlickException 
 	{
 		this.pos = new Vector2f(x,y);
 		this.box = new Rectangle(x, y+36, width, 12);
@@ -55,6 +63,9 @@ public abstract class Entity
 			new Animation(this.sprite, spriteX, spriteY+1, spriteX+2, spriteY+1,true, 100, true),//gauche
 			new Animation(this.sprite, spriteX, spriteY+2, spriteX+2, spriteY+2,true, 100, true)//droite
 		};
+		this.aDialogs = new HashMap<String,String[]>();
+		
+		this.name = pName;
 	}
  
 	/**
@@ -119,13 +130,14 @@ public abstract class Entity
 	 * @param mapHeight the map height
 	 * @param map the map
 	 */
-	public void moveEntity(Vector2f trans, int mapWidth, int mapHeight, Map map)
+	public Entity moveEntity(Vector2f trans, int mapWidth, int mapHeight, Map map)
 	{
 		if (trans.x != 0 && trans.y != 0) 
 		{ // If both components aren't null, we reduce them to have constant speed on all directions
 			trans.set(trans.x / 1.5f, trans.y / 1.5f);
 		}
 		box.setLocation(pos.x+trans.x, pos.y+36+trans.y);
+		hitbox.setLocation(pos.x+trans.x, pos.y+trans.y);
 		
 		if( (pos.x + trans.x) > 0 && (pos.x + trans.x) < (mapWidth-32) && !map.isTileBlocked(box) && !isEntityHere())
 		{// Is the player inside the map? (We add (subtract) because of the stone wall) 			
@@ -133,7 +145,10 @@ public abstract class Entity
 		}
 		else
 		{
+			// On revient en arrière
 			box.setX(pos.x);
+			hitbox.setX(pos.x);
+			setRunning(false);
 		}
 		
 		if( (pos.y+trans.y) > 0 && (pos.y+trans.y) < (mapHeight-48) && !map.isTileBlocked(box) && !isEntityHere())
@@ -142,8 +157,13 @@ public abstract class Entity
 		}
 		else
 		{
+			// On revient en arrière
 			box.setY(pos.y+36);
+			hitbox.setY(pos.y);
+			setRunning(false);
 		}
+		
+		return entityColliding;
 	}
 	
 	public boolean isEntityHere()
@@ -154,10 +174,22 @@ public abstract class Entity
 		{
 			if (box.intersects(e.getBox()))
 			{
+				entityColliding = e;
 				return true;
 			}
 		}
+		entityColliding = null;
 		return false;
+	}
+	
+	public void addDialog(String pType, String[] dialogs)
+	{
+		this.aDialogs.put(pType, dialogs);
+	}
+	
+	public String[] getDialog(String pType)
+	{
+		return this.aDialogs.get(pType);
 	}
  
 	// Getters and Setters
@@ -338,5 +370,43 @@ public abstract class Entity
 	public void setRunning(boolean isRunning) 
 	{
 		this.isRunning = isRunning;
+	}
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/** 
+	 * On compare les entity en fonction de leur position y
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
+	@Override
+	public int compareTo(Entity pObj) 
+	{
+		double y1 = this.pos.y;
+		double y2 = pObj.pos.y;
+		
+		if (y1 > y2)
+		{
+			return 1;
+		}
+		else if (y1 == y2)
+		{
+			return 0;
+		}
+		else
+		{
+			return -1;
+		}
 	}
 }

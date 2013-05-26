@@ -8,16 +8,20 @@ public class Character extends Entity
 {
 	public long lastMove;
 
-	public Character(float x, float y, int width, int height, String sprite, int spriteX, int spriteY) throws SlickException 
+	public Character(float x, float y, int width, int height, String sprite, int spriteX, int spriteY, String pName) throws SlickException 
 	{
-		super(x, y, width, height, sprite, spriteX, spriteY);
+		super(x, y, width, height, sprite, spriteX, spriteY, pName);
 		lastMove = System.currentTimeMillis();
+		super.statLife = 30;
+		super.statStrength = 10;
+		super.statDefense = 10;
 	}
 
 	@Override
 	public void update(GameContainer gc, int mapWidth, int mapHeight, int delta, Map map) 
 	{
 		Vector2f trans = new Vector2f(0, 0);
+		// Normal speed 0.10f
 		float speed = 0.10f;
 		
 		if (System.currentTimeMillis() > (lastMove+2000) )
@@ -27,7 +31,7 @@ public class Character extends Entity
 			setRunning(false);
 	     
 	    	if(random >= 1 && random < 2)
-	    	{
+	    	{//Delta is used to move things on a frame rate independent way
 	    		trans.x= speed * delta;
 	    		setRunning(true);
 				setDirection("droite");
@@ -39,7 +43,7 @@ public class Character extends Entity
 	    		setDirection("gauche");
 	    	}
 	    	else if(random >= 3 && random < 4)
-	    	{//Delta is used to move things on a frame rate independent way
+	    	{
 	    		trans.y = -speed * delta;
 	    		setRunning(true);
 	    		setDirection("haut");
@@ -75,5 +79,4 @@ public class Character extends Entity
     	
     	moveEntity(trans, mapWidth, mapHeight, map);
 	}
-
 }
