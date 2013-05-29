@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.params=
+comment0.target=AleaCommand()
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ AleaCommand\n
+comment1.params=player
+comment1.target=void\ execute(pkg_others.Player)
+numComments=2

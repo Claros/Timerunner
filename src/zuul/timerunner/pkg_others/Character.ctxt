@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=pName\ pDialog\ pObject\ pCurrentRoom
+comment0.target=Character(java.lang.String,\ java.lang.String,\ java.lang.String,\ pkg_rooms.Room)
+comment0.text=\n\ Instantiates\ a\ new\ character.\n\n\ @param\ pName\ the\ name\n\ @param\ pDialog\ the\ dialog\n\ @param\ pObject\ the\ object\n\ @param\ pCurrentRoom\ the\ current\ room\n
+comment1.params=
+comment1.target=java.lang.String\ getName()
+comment1.text=\n\ Gets\ the\ name.\n\n\ @return\ the\ name\n
+comment2.params=
+comment2.target=pkg_rooms.Room\ getCurrentRoom()
+comment2.text=\n\ Gets\ the\ current\ room.\n\n\ @return\ the\ current\ room\n
+comment3.params=pCurrentRoom
+comment3.target=void\ setCurrentRoom(pkg_rooms.Room)
+comment3.text=\n\ Sets\ the\ current\ room.\n\n\ @param\ pCurrentRoom\ the\ new\ current\ room\n
+comment4.params=
+comment4.target=pkg_items.ItemList\ getItemList()
+comment4.text=\n\ Gets\ the\ item\ list.\n\n\ @return\ the\ item\ list\n
+comment5.params=
+comment5.target=java.lang.String\ getDialog()
+comment5.text=\n\ Gets\ the\ dialog.\n\n\ @return\ the\ dialog\n
+comment6.params=
+comment6.target=java.lang.String\ getObject()
+comment6.text=\n\ Gets\ the\ object.\n\n\ @return\ the\ object\n
+comment7.params=pNextRoom
+comment7.target=void\ moveCharacter(pkg_rooms.Room)
+comment7.text=\n\ Move\ the\ Character\n\ \n\ @param\ pNextRoom\ The\ Room\ where\ the\ character\ has\ to\ go\n
+numComments=8

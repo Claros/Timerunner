@@ -6,6 +6,7 @@ import org.newdawn.slick.tiled.TiledMap;
  
 /**
  * The Class Camera.
+ * @author Shockper
  */
 public class Camera 
 {

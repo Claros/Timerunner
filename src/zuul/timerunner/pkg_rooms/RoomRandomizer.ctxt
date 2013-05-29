@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=pListeRoom
+comment0.target=RoomRandomizer(java.util.HashMap)
+comment0.text=\n\ Instantiates\ a\ new\ room\ randomizer.\n\n\ @param\ pListeRoom\ the\ liste\ room\n
+comment1.params=
+comment1.target=Room\ nextRoom()
+comment1.text=\n\ @return\ a\ random\ Room\ inside\ the\ room\ list\n
+comment2.params=pTirage
+comment2.target=void\ setTirage(java.lang.String)
+numComments=3

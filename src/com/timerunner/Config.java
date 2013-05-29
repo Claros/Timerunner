@@ -13,7 +13,8 @@ public enum Config
 	KEY_RIGHT("right", 205), 
 	KEY_LEFT("left", 203),
 	KEY_UP("up", 200), 
-	KEY_DOWN("down", 208);
+	KEY_DOWN("down", 208),
+	KEY_TALK("talk", 45);
 
 	private String property;
 	private int value;
@@ -63,6 +64,7 @@ public enum Config
 				prop.setProperty("left", "203");
 				prop.setProperty("up", "200");
 				prop.setProperty("down", "208");
+				prop.setProperty("talk", "45");
 				
 				prop.store(new FileOutputStream("./config.properties"), null);
 			} catch (IOException e)

@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=pWeight\ pDescription\ pEdible
+comment0.target=Beamer(int,\ java.lang.String,\ boolean)
+comment0.text=\n\ Constructor\ of\ Beamer\ class.\n\n\ @param\ pWeight\ Weight\ of\ the\ Item\n\ @param\ pDescription\ Description\ of\ the\ Item\n\ @param\ pEdible\ Edible\ or\ not\n
+comment1.params=
+comment1.target=boolean\ getLoaded()
+comment1.text=\n\ getter\ getLoaded.\n\n\ @return\ true\ if\ the\ Beamer\ is\ loaded\n
+comment2.params=
+comment2.target=void\ invLoaded()
+comment2.text=\n\ Reverse\ Beamer's\ state.\n
+comment3.params=
+comment3.target=pkg_rooms.Room\ getSave()
+comment3.text=\n\ getter\ getSave.\n\n\ @return\ Room\ saved\ when\ the\ beamer\ is\ loaded\n
+comment4.params=pSave
+comment4.target=void\ setSave(pkg_rooms.Room)
+comment4.text=\n\ setter\ setSave.\n\n\ @param\ pSave\ the\ new\ Room\ to\ save\n
+numComments=5

@@ -6,12 +6,12 @@ import java.util.Collections;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import com.timerunner.Camera;
+import com.timerunner.Config;
 import com.timerunner.Entity;
 import com.timerunner.Game;
 import com.timerunner.Map;
@@ -46,7 +46,7 @@ public class GameState extends GlobalState
 		//dialog = new String();
 		
 		// Spawn : 50, 3100
-		player = new Player(1875, 1415, 32, 48, "pics/vx_chara02_c.png", 6, 4, "");
+		player = new Player(50, 3100, 32, 48, "pics/vx_chara02_c.png", 6, 4, "");
 		characters = new ArrayList<Entity>();
 		
 		characters.add(new Character(1875, 1515, 32, 48, "pics/vx_chara01_a.png", 0, 0, "PNJ1"));
@@ -165,24 +165,22 @@ public class GameState extends GlobalState
 	public void keyPressed(int key, char c) 
 	{
 		super.keyPressed(key, c);
-		switch (key) 
+		if (key == Config.KEY_TALK.getValue())
 		{
-			case Input.KEY_X :
-				if (dialog == null)
+			if (dialog == null)
+			{
+				if (player.isEntityTalkable() != null)
 				{
-					if (player.isEntityTalkable() != null)
+					if (player.isEntityTalkable().getDialog("talk") != null)
 					{
-						if (player.isEntityTalkable().getDialog("talk") != null)
-						{
-							dialog = player.isEntityTalkable().getDialog("talk")[0];
-						}
+						dialog = player.isEntityTalkable().getDialog("talk")[0];
 					}
 				}
-				else
-				{
-					dialog = null;
-				}
-			break;
+			}
+			else
+			{
+				dialog = null;
+			}
 		}
 	}
 

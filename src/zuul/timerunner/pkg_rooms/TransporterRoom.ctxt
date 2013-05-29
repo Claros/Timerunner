@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=pDescription\ pImage
+comment0.target=TransporterRoom(java.lang.String,\ java.lang.String)
+comment0.text=\n\ Instantiates\ a\ new\ transporter\ room.\n\n\ @param\ pDescription\ the\ description\n\ @param\ pImage\ the\ image\n
+comment1.params=direction
+comment1.target=Room\ getExit(java.lang.String)
+comment1.text=\n\ Return\ a\ random\ room,\ independent\ of\ the\ direction\ \n\ parameter.\n\ @param\ direction\ ignored.\n\ @return\ a\ random\ room.\n
+numComments=2
