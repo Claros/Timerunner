@@ -39,10 +39,11 @@ public abstract class GlobalState extends BasicGameState
 	 * >> Seconde manière de détecter l'appui d'une touche.
 	 *
 	 * @param key the key
-	 * @param c the c
+	 * @param charPressed the char corresponding to the key pressed
 	 */
-	public void keyPressed(int key, char c) 
+	public void keyPressed(int key, char charPressed) 
 	{
+		//System.out.println(c);
 		switch (key) 
 		{
 			// Touche Echap : met en pause

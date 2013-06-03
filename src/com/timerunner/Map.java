@@ -15,6 +15,7 @@ public class Map extends TiledMap
 	
 	/** The blocked tile. */
 	private ArrayList<Rectangle> blockedTile;
+    private ArrayList<Entity> characters;
 	 
 	/**
 	 * Instantiates a new map.
@@ -45,9 +46,31 @@ public class Map extends TiledMap
 		            }
 		       }
 		}
-		
+		characters = new ArrayList<Entity>();
 	}
 	
+	public void addCharacter(final Entity pEntity)
+	{
+		characters.add(pEntity);
+	}
+	
+	public void removeCharacter(final Entity pEntity)
+	{
+		characters.remove(pEntity);
+	}
+	
+	public Entity getCharacter(final int pI)
+	{
+		return characters.get(pI);
+	}
+	
+	/**
+	 * @return the characters
+	 */
+	public ArrayList<Entity> getCharacters() {
+		return characters;
+	}
+
 	/**
 	 * Draw rect.
 	 *

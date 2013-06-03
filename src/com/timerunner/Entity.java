@@ -231,6 +231,26 @@ public abstract class Entity implements Comparable<Entity>
 	{
 		this.pos = pos;
 	}
+	 
+	/**
+	 * Sets the pos.
+	 *
+	 * @param pos the new pos
+	 */
+	public void setPosX(float pX) 
+	{
+		this.pos.x = pX;
+	}
+	 
+	/**
+	 * Sets the pos.
+	 *
+	 * @param pY the new y of the pos
+	 */
+	public void setPosY(float pY) 
+	{
+		this.pos.y = pY;
+	}
  
 	/**
 	 * Gets the box.

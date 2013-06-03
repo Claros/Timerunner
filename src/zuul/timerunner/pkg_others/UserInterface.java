@@ -3,7 +3,7 @@ package zuul.timerunner.pkg_others;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.net.URL;
+//import java.net.URL;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import zuul.timerunner.pkg_rooms.Room;
@@ -59,17 +59,11 @@ public class UserInterface implements ActionListener, KeyEventDispatcher
      */
     public void showImage(final String imageName)
     {
-        URL imageURL = this.getClass().getResource(imageName);
-        if(imageURL == null)
-        {
-            this.println("image not found");
-        }
-        else 
-        {
-            ImageIcon icon = new ImageIcon(imageName);
-            image.setIcon(icon);
-            myFrame.pack();
-        }
+        //URL imageURL = this.getClass().getResource(imageName);
+        ImageIcon icon = new ImageIcon(imageName);
+        //ImageIcon icon = new ImageIcon(imageURL);
+        image.setIcon(icon);
+        myFrame.pack();
     }
 
     /**

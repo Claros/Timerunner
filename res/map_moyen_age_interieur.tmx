@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="79" height="83" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="castle-walls" tilewidth="32" tileheight="32">
+  <image source="image_map/castle-walls.png" width="544" height="640"/>
+  <tile id="0">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="51">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="52">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="53">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="54">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="68">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="69">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="70">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="71">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="328">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="331">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="341" name="tileset_palace" tilewidth="32" tileheight="32">
+  <image source="image_map/tileset_palace.png" width="320" height="320"/>
+  <tile id="51">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="441" name="celiannaorchestratiles" tilewidth="32" tileheight="32">
+  <image source="image_map/celiannaorchestratiles.png" width="496" height="448"/>
+  <tile id="15">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="38">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="86">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="89">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="101">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="104">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="147">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="148">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="651" name="035-ru10" tilewidth="32" tileheight="32">
+  <image source="image_map/035-ru10.png" width="256" height="896"/>
+  <tile id="122">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="126">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="127">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="875" name="medieval 1" tilewidth="32" tileheight="32">
+  <image source="image_map/medieval 1.png" width="512" height="512"/>
+  <tile id="27">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="44">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="60">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="75">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="76">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="77">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="78">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="79">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="91">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="98">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="99">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="107">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="110">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="112">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="113">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="114">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="115">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="122">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="166">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="167">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="182">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="183">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="184">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="185">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="193">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="200">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="203">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="206">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="207">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="209">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="210">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="214">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="216">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="219">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="220">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="221">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="235">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="236">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="237">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="238">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="239">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="243">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="244">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="245">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="251">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="253">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="254">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="255">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="1131" name="medieval 3" tilewidth="32" tileheight="32">
+  <image source="image_map/medieval 3.png" width="256" height="800"/>
+  <tile id="88">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="89">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="93">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="94">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="95">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="101">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="102">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="103">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="104">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="105">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="112">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="113">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="114">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="115">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="116">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="122">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="123">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="126">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="127">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="138">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="139">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="140">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="141">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="155">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="156">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="159">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="163">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="164">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="165">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="166">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="179">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="180">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="181">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="182">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="191">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="195">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="196">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="197">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="198">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+  <tile id="199">
+   <properties>
+    <property name="walkable" value="false"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="sol" width="79" height="83">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2awU4UQRCGd9l9NhIS3kA9KTdMOKHeVBIOCuECcgMUSEDXKzyBcOIReBdrEkgmZdc6+0/NVk/P/yffrTfb881U1073jkbdZFUxtOjrb8PQQnd46A7P5tQPncrn2njxe7A+7se9oDs8dIenz+7eTjG80qW7H+N/ORdOhFPhTPieGPM8bsjuZk8eZsrJF+GrsCfs013S3c2Tt5uav8rJtvBOeC98oLu5NXuu+Ch8Ej4LO3Rn1mzFbwVrtlnNVtwqDoUj4ZtwTHfss87uDsZproRr4afwyxhzMHB31vPUtz77v9/y2oPHvorlxKvPLiNNrtPb3focJ1591opnfSJ7bx7urPcK3WetcWhKcGe9V+g+a41D4+nuYiUG671C91lrXNS8c6Btn42ef47umvbZ6Pnn6K5pn42e/zz+yFp6p7ifdu+uhJqNcldCzUa5K6Fmu6bkmo1yV0LNRrnrU81GvVuUULNRKaFmc3PH5w53x+cOd9f13mcJsfY0dc16732WEGtPU9es995nCak/Q3WsmtXjhpy2fXbIsdYxXbO5r3ce562LYq1jumZzX++qa0H+v9rmnMz6Tn3GaH02l+TkTp8x0l1zd/q3e+7uot9t+grd+blLnVN4o+fQ9ec8SJ3VRLjrI3TXf3esWT93Tb4zNfdl1gjddesuAtRdNHTXzl1E2ri7BK91d5Jm0TF0N1x3SB4maepzscbklAh3j5M09blYY3JKhLutKU5OoTs8dIeH7vDQHR66w0N3eOgOD93hoTs8dIeH7vDQHZ4Id6WE7vDQHR66w0N3eOgOz2ylHUPOi8lo9BLkVWZnL8sO3eGhOzyv5frfgGxk4u4v6piXFXRmAAA=
+  </data>
+ </layer>
+ <layer name="Calque 2" width="79" height="83">
+  <data encoding="base64" compression="gzip">
+   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
+  </data>
+ </layer>
+ <layer name="objets" width="79" height="83">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2cuY7UQBCGZ3xIi5aMa0hZcaxEggQPAQFHwgPwEhwpII43gCcAUiKOgF0CxBETEJAgmB20LEiAhLRaQbXGLdo1XXa7bfcxU59Usl1u2+3ffbnaM4MBw4THr6ybdSYehmBJQ0u95DQ8VtD2ZlEHtrOpYb/gcO+56g9dHbet9yvKsabLmLXrEqHdCUX3b7C+BfY9K69LRFrWbgqusyawdlNYO3sWQbs1GEysD7s/L6XdC2jX1gpbR/1QbNr1hdDuLGhzDuy8YV/N2k2hyt3xrGwqMWn3zGLsZnrMIrR3fcHa2YPHxnXENjbG9e93MpsG+2Kqs6cIX1MzYUejnc5nm4cuTY25qPGEzQZlHaelzmN7foqqmKE8v1jWxRNNY494n1pGx7C9kc2uV/GTSEP5dQzhASYGgTPTdCQ5nCNvcTwiprZRxxN4H3mK3kmeZ7PbCWi2BLbLUDvdOTBSu/eBxMZN+gqf1JX9QwbPxiSNCbjPNOkrbMbTTDP25+2WpvRRZ39w+Ri8BQ3eETqM4BkdBDsGttphH9aGI5CP3YWJOFOa/485pcgvLEPbMjZ1NJD7cYnUTiC1EcvlYimQPrmtpl8u1k21s62zbcqdeGeyjaOYjq0O5HZLW1z2s4wdunf10Md3oaDTrkksIARODvzEIWxiRCq+4yg+kdo5iwU4YMuBT9C23HWRj7b3gPnrwCfoqq9wkV/qHnwxD32FL7qqs4sIa2cPa2cPa2fPvGgnpkt8j9NjM4ltGXiVlpe2JDAOGSb1SwyeM73g0C/jYJR2fwJ/BxI8VvJ4SfFfBv+VdNZPpaf86j7Vj7UbFTqL+UhsmBERt5zAdT4p+ZD674H0e4tjljqcy3hJPN9b4L+t2Uelp/zUPjX+ehru5wzPzzCOqSp346LMTmr6Brn/awTtJBMGF7mt64yxUu8mqA5uEHXyS1o2xpzPadmqaPNOFvq3b3239/Os3Ueuc8bENkdnc03bmEfaQ/7b0ufvenSIduIqCHGtpzrla36uDdQ1dP47oNvdFtpV3U+M83PUNXT+e6Db/UI7NdZC8QbtD22+0SXXQYsbYDdTfaxF/d3oa9j3IdA+03V7xzBMvIhvsvdFXP99tXerEWsWAvi/AiTqvApT5gGMOR6CPQp07MH0j4/2zkfcgmEYht9nGYZhmFqK7znVbzvxuuoTlvJvVRiGYRhmIfgHIHWDZXRmAAA=
+  </data>
+ </layer>
+ <objectgroup name="objetss" width="79" height="83">
+  <object name="ext" x="1184" y="2624" width="64" height="32"/>
+ </objectgroup>
+</map>

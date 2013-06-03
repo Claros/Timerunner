@@ -405,4 +405,8 @@
    H4sIAAAAAAAAA+3buW4TURTG8Rk/CRJPwNJBxdLBGxCegKRkkwhrwaJQsIuWtQUSoAeSUIOoWAokOpYnAD7LYI8Szz53OeP/T/pkS2Pmjs8d5lxZN0kCAAAA2HBLua3cCXwduwZJsnuQf/xjmiSflM/Kl9T99eSNV3adbT1UHimP3Q1RyQF9x4MF3/O7avJD+an88jAfeeOVXWdbz5UXykt3Q3Tit2ryZ1gX1SItqccxHT9e8JkTOnay5Bx1xuvSqrKmrCfxPLum2aaabFd2KDs91Mf3eNPE8uzCiJVn16zIPrsQh1h7SCzrXd9i7SGxrHd9i7WH+F5/hlrvbhRrD5nF9S7Q1NF0c2I4FxCK699WQ49nzbTfVt90+GzZeC7Xv+X20YcO56PLcwExyHteXSu41/OOdfnsm1U8rwAAAIB+mVMOh74IjM0rC6EvAmOnlMXQF4GxJeVq6IsA0Aux7KWLyf+/OajytwVd87WXztK696Lm4JJyWbnieT62DCZ76bY6HNvSuvec6nD+Xy54ng9fe+ksrXsXVYfTyhnlrOf52KPx9ir7lP0Ox7a07l3V82JNWVfe0lMbm0u7eR3K7p/q6rxVX13u3bLUx7Pa7J9aUF2PpJNXn2OXsdTHixxSXZcGbl99sNTHuzL8PzGfTl5jYqmP58nuWa/y/q7ev1Pep6P3Vf+t673xVnvHUJue+lV1faI8Vb41qLGrfm65d9Ttqcv67ErB58uOtxm7qlnqHa9Uv9cFNSw77kMfekfWdeWGcjPwOTByT7mvPAh8jrYs9/WsZ8qyshL4HE1k58ByX++L7BzMUl+PVXYO+tbXLWIOyrHWiksMay1MhFprAQCAzVi3xoV1a1xYtwIAAAAAAAAAAAAAgCbYk1OP63qxJ6eeOvVqMnfsyamnTr36fK9bfK5autfr1tfCvebqnvFxL9atr4V7rek9U1ZvH/eihfrW1fQ7ldW7j7WKGfUG0MZfLljW/0CcAAA=
   </data>
  </layer>
+ <objectgroup name="objetss" width="100" height="100">
+  <object name="Spawn" x="64" y="3072" width="32" height="32"/>
+  <object name="int" x="1376" y="928" width="128" height="32"/>
+ </objectgroup>
 </map>

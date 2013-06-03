@@ -24,7 +24,7 @@ public class Main implements ActionListener
 {
 	private JFrame aFrame;
 	private JButton aZuul, aSlick;
-	public static final int VERSION = 1;
+	public static final int VERSION = 2;
 	
 	public Main()
 	{

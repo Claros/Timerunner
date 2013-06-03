@@ -10,12 +10,16 @@ import java.util.Properties;
 
 public enum Config 
 {
-	KEY_RIGHT("right", 205), 
-	KEY_LEFT("left", 203),
-	KEY_UP("up", 200), 
-	KEY_DOWN("down", 208),
-	KEY_TALK("talk", 45);
-
+	KEY_RIGHT("right", 32), 
+	KEY_LEFT("left", 16),
+	KEY_UP("up", 44), 
+	KEY_DOWN("down", 31),
+	KEY_TALK("talk", 45),
+	// Spawn : 50, 3100
+	POS_X("posx", 50),
+	POS_Y("posy", 3100),
+	CURRENT_MAP("cmap", 0);
+	
 	private String property;
 	private int value;
 	private static Properties prop = new Properties();
@@ -45,6 +49,27 @@ public enum Config
 		return this.property;
 	}
 	
+	public static void writeFile()
+	{
+		try 
+		{
+			// Si on ne trouve pas le fichier, on le créé
+			prop.setProperty("right", "" + Config.KEY_RIGHT.getValue());
+			prop.setProperty("left", "" + Config.KEY_LEFT.getValue());
+			prop.setProperty("up", "" + Config.KEY_UP.getValue());
+			prop.setProperty("down", "" + Config.KEY_DOWN.getValue());
+			prop.setProperty("talk", "" + Config.KEY_TALK.getValue());
+			prop.setProperty("posx", "" + Config.POS_X.getValue());
+			prop.setProperty("posy", "" + Config.POS_Y.getValue());
+			prop.setProperty("cmap", "" + Config.CURRENT_MAP.getValue());
+			
+			prop.store(new FileOutputStream("./config.properties"), null);
+		} catch (IOException e)
+		{
+			
+		}
+	}
+	
 	public static void init()
 	{
 		try 
@@ -57,20 +82,7 @@ public enum Config
 			}
 		} catch (FileNotFoundException ex) 
 		{
-			try 
-			{
-				// Si on ne trouve pas le fichier, on le créé
-				prop.setProperty("right", "205");
-				prop.setProperty("left", "203");
-				prop.setProperty("up", "200");
-				prop.setProperty("down", "208");
-				prop.setProperty("talk", "45");
-				
-				prop.store(new FileOutputStream("./config.properties"), null);
-			} catch (IOException e)
-			{
-				
-			}
+			 Config.writeFile();
 	    } catch (IOException pe)
 	    {
 	    	// On ne touche pas à la config
