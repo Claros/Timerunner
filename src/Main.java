@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
@@ -43,6 +44,14 @@ public class Main implements ActionListener
 		this.aFrame.getContentPane().add(vPanel, BorderLayout.CENTER);
 		this.aFrame.pack();
 		this.aFrame.setVisible(true);
+		this.aFrame.addWindowListener(new WindowAdapter() 
+        {
+            public void windowClosing( WindowEvent e ) 
+            {
+            	aFrame.setVisible( false );
+            	aFrame.dispose();
+            }
+        });
 		
 		try
 		{

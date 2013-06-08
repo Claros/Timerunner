@@ -1,4 +1,4 @@
-package com.timerunner;
+package com.timerunner.entities;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,10 +11,12 @@ import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
 
+import com.timerunner.Map;
 import com.timerunner.states.GameState;
 
 /**
- * The Class Player.
+ * The Class Entity.
+ * The Entity is a super class for the characters and Player
  */
 public abstract class Entity implements Comparable<Entity>
 {
@@ -129,6 +131,7 @@ public abstract class Entity implements Comparable<Entity>
 	 * @param mapWidth the map width
 	 * @param mapHeight the map height
 	 * @param map the map
+	 * @return entity the entity colliding with the current entity
 	 */
 	public Entity moveEntity(Vector2f trans, int mapWidth, int mapHeight, Map map)
 	{
@@ -166,9 +169,15 @@ public abstract class Entity implements Comparable<Entity>
 		return entityColliding;
 	}
 	
+	/**
+	 * Checks if there is entity colliding with the current entity
+	 *
+	 * @return true, if there is an entity colliding with the current entity
+	 */
 	public boolean isEntityHere()
 	{
-		ArrayList<Entity> entities = new ArrayList<Entity> ( GameState.getCharacters());
+		ArrayList<Entity> entities = new ArrayList<Entity> ( GameState.getCharacters() );
+		// On retire l'entity courante
 		entities.remove(this);
 		for (Entity e : entities)
 		{
@@ -182,11 +191,23 @@ public abstract class Entity implements Comparable<Entity>
 		return false;
 	}
 	
+	/**
+	 * Adds a text dialog au character.
+	 *
+	 * @param pType the type of the dialog
+	 * @param dialogs the dialogs
+	 */
 	public void addDialog(String pType, String[] dialogs)
 	{
 		this.aDialogs.put(pType, dialogs);
 	}
 	
+	/**
+	 * Gets the dialogs.
+	 *
+	 * @param pType the type of the dialog
+	 * @return the dialogs
+	 */
 	public String[] getDialog(String pType)
 	{
 		return this.aDialogs.get(pType);
@@ -233,9 +254,9 @@ public abstract class Entity implements Comparable<Entity>
 	}
 	 
 	/**
-	 * Sets the pos.
+	 * Sets the X pos.
 	 *
-	 * @param pos the new pos
+	 * @param pX the new x of the pos
 	 */
 	public void setPosX(float pX) 
 	{
@@ -243,7 +264,7 @@ public abstract class Entity implements Comparable<Entity>
 	}
 	 
 	/**
-	 * Sets the pos.
+	 * Sets the Y pos.
 	 *
 	 * @param pY the new y of the pos
 	 */
@@ -408,6 +429,7 @@ public abstract class Entity implements Comparable<Entity>
 
 	/** 
 	 * On compare les entity en fonction de leur position y
+	 * Cela permet de les afficher dans différents plans
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	@Override

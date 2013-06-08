@@ -1,4 +1,4 @@
-package com.timerunner;
+package com.timerunner.entities;
 
 import java.util.ArrayList;
 
@@ -7,10 +7,13 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 
+import com.timerunner.Config;
+import com.timerunner.Map;
 import com.timerunner.states.GameState;
 
 /**
  * The Class Player.
+ * The Player can move independently from the game engine.
  */
 public class Player extends Entity
 { 
@@ -82,6 +85,11 @@ public class Player extends Entity
     	entityContact = moveEntity(trans, mapWidth, mapHeight, map);
 	}
 	
+	/**
+	 * Gets the contact.
+	 *
+	 * @return the contact
+	 */
 	public Entity getContact()
 	{
 		return entityContact;

@@ -5,7 +5,7 @@ Timerunner est un jeu Java réalisé à l'aide de la libraire Slick2D et OpenGL.
 
 Le projet est déjà configuré pour être testé avec Eclipse sous Linux. Il suffit de changer les natives d'OpenGL pour le configurer pour un autre système.
 
-Vous pouvez télécharger une démo en choisissant le fichier [timerunner.jar](https://github.com/Claros/Timerunner/blob/master/timerunner.jar?raw=true)
+Vous pouvez télécharger une démo en choisissant le fichier [timerunner.jar](https://github.com/Claros/Timerunner/blob/master/timerunner.jar?raw=true) ou [timerunner.exe pour windows](https://github.com/Claros/Timerunner/blob/master/timerunner.exe?raw=true) ou [timerunner.sh pour linux](https://github.com/Claros/Timerunner/blob/master/timerunner.sh?raw=true)
 
 Choses faites
 -------------
@@ -17,12 +17,12 @@ Choses faites
 * Menu de pause et d'acceuil
 * Gestion de la config des touches
 * Vérificateur de mises à jour
+* Sauvegarde de la progression
 
 Choses restant à faire
 ----------------------
 * Menu de configuration
 * Système de combat
-* Sauvegarde de la progression
 * Gestion des objets
 * Implantation des autres map déjà réalisées
 * Implantation du scénario

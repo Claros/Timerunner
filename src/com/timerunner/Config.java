@@ -8,6 +8,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * The Enum Config.
+ */
 public enum Config 
 {
 	KEY_RIGHT("right", 32), 
@@ -24,6 +27,12 @@ public enum Config
 	private int value;
 	private static Properties prop = new Properties();
 	
+	/**
+	 * Instantiates a new config.
+	 *
+	 * @param pProperty the property
+	 * @param pValue the value
+	 */
 	Config(final String pProperty, final int pValue)
 	{
 		this.value = pValue;
@@ -31,6 +40,8 @@ public enum Config
 	}
 	
 	/**
+	 * Gets the value.
+	 *
 	 * @return the value
 	 */
 	public int getValue() {
@@ -38,17 +49,27 @@ public enum Config
 	}
 
 	/**
+	 * Sets the value.
+	 *
 	 * @param value the value to set
 	 */
 	public void setValue(int value) {
 		this.value = value;
 	}
 	
+	/**
+	 * Gets the property.
+	 *
+	 * @return the property
+	 */
 	public String getProperty()
 	{
 		return this.property;
 	}
 	
+	/**
+	 * Write file.
+	 */
 	public static void writeFile()
 	{
 		try 
@@ -70,6 +91,9 @@ public enum Config
 		}
 	}
 	
+	/**
+	 * Inits the configuration.
+	 */
 	public static void init()
 	{
 		try 

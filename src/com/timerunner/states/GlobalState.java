@@ -48,8 +48,7 @@ public abstract class GlobalState extends BasicGameState
 		{
 			// Touche Echap : met en pause
 			case Input.KEY_ESCAPE :
-				getGraphics().copyArea(GlobalState.screen, 0, 0);
-				pauseState(this.getID(), PauseMenuState.ID, new FadeOutTransition(new Color (0.2f, 0.2f, 0.2f, 0.5f)), new FadeInTransition(new Color (0.2f, 0.2f, 0.2f, 0.5f)));
+				this.startPause();
 			break;
 			// Touche F3, active/desactive le debug
 			case Input.KEY_F3 :
@@ -74,6 +73,15 @@ public abstract class GlobalState extends BasicGameState
 	 */
 	@Override
 	public abstract int getID();
+	
+	public void startPause()
+	{
+		if (this.getID() != PauseMenuState.ID)
+		{
+			getGraphics().copyArea(GlobalState.screen, 0, 0);
+			pauseState(this.getID(), PauseMenuState.ID, new FadeOutTransition(new Color (0.2f, 0.2f, 0.2f, 0.5f)), new FadeInTransition(new Color (0.2f, 0.2f, 0.2f, 0.5f)));
+		}
+	}
 	
 	/**
 	 * Pause a particular game state with the transitions provided.

@@ -13,14 +13,16 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import com.timerunner.Camera;
 import com.timerunner.Config;
-import com.timerunner.Entity;
 import com.timerunner.Game;
 import com.timerunner.Map;
-import com.timerunner.Player;
-import com.timerunner.Character;
+import com.timerunner.entities.Character;
+import com.timerunner.entities.Entity;
+import com.timerunner.entities.MovingCharacter;
+import com.timerunner.entities.Player;
 
 /**
  * The Class GameState.
+ * The GameState manage the Game Engine.
  */
 public class GameState extends GlobalState
 {
@@ -47,10 +49,8 @@ public class GameState extends GlobalState
 		super.init(container, game);
 		this.background = new Music("res/military.xm");
 		
-		//dialog = new String();
 		currentMap = Config.CURRENT_MAP.getValue();
 		player = new Player(Config.POS_X.getValue(), Config.POS_Y.getValue(), 32, 48, "pics/vx_chara02_c.png", 6, 4, "");
-		//characters = new ArrayList<Entity>();
 		
 		map = new Map[] {new Map("res/map_moyen_age_exterieur.tmx"), new Map("res/map_moyen_age_interieur.tmx")};
 		extVersInt = new Rectangle(1375, 927, map[0].getTileWidth()*4, map[0].getTileHeight());
@@ -58,32 +58,34 @@ public class GameState extends GlobalState
 		// Map size = Tile Size * number of Tiles
 		mapWidth = map[currentMap].getWidth() * map[currentMap].getTileWidth(); 
 		mapHeight = map[currentMap].getHeight() * map[currentMap].getTileHeight();
-		camera = new Camera(map[currentMap], mapWidth, mapHeight);
+		camera = new Camera(mapWidth, mapHeight);
 		
-		map[0].addCharacter(new Character(1875, 1515, 32, 48, "pics/vx_chara01_a.png", 0, 0, "PNJ1"));
-		map[0].addCharacter(new Character(1875, 1215, 32, 48, "pics/vx_chara01_a.png", 3, 0, "PNJ2"));
-		map[0].addCharacter(new Character(1875, 1315, 32, 48, "pics/vx_chara01_a.png", 0, 4, "PNJ3"));
-		map[0].addCharacter(new Character(1700, 1250, 32, 48, "pics/vx_chara01_b.png", 0, 4, "PNJ4"));
-		map[0].addCharacter(new Character(1700, 1300, 32, 48, "pics/vx_chara01_b.png", 3, 0, "PNJ5"));
-		map[0].addCharacter(new Character(1700, 1350, 32, 48, "pics/vx_chara01_b.png", 3, 4, "PNJ6"));
-		map[0].addCharacter(new Character(1900, 1200, 32, 48, "pics/vx_chara02_a.png", 6, 4, "PNJ7"));
-		map[0].addCharacter(new Character(1800, 1100, 32, 48, "pics/vx_chara02_b.png", 6, 4, "PNJ8"));
-		map[0].addCharacter(new Character(1850, 1200, 32, 48, "pics/vx_chara02_d.png", 6, 4, "PNJ9"));
-		map[0].addCharacter(new Character(1835, 1100, 32, 48, "pics/vx_chara03_a.png", 6, 4, "PNJ10"));
-		map[0].addCharacter(new Character(1925, 1300, 32, 48, "pics/vx_chara03_b.png", 6, 4, "PNJ11"));
-		map[0].addCharacter(new Character(1775, 1200, 32, 48, "pics/vx_chara03_c.png", 6, 4, "PNJ12"));
-		map[0].addCharacter(new Character(1750, 1300, 32, 48, "pics/vx_chara03_d.png", 3, 0, "PNJ13"));
-		map[0].addCharacter(new Character(1725, 1100, 32, 48, "pics/vx_chara03_e.png", 6, 4, "PNJ14"));
-		map[0].addCharacter(new Character(1700, 1200, 32, 48, "pics/vx_chara03_f.png", 6, 4, "PNJ15"));
-		map[0].addCharacter(new Character(1875, 1300, 32, 48, "pics/vx_chara03_g.png", 6, 4, "PNJ16"));
+		// Initialisation des tous les PNJ
+		map[0].addCharacter(new Character(1875, 1515, 32, 48, "pics/vx_chara01_a.png", 0, 0, "PNJ 1"));
+		map[0].addCharacter(new MovingCharacter(1875, 1215, 32, 48, "pics/vx_chara01_a.png", 3, 0, "PNJ 2"));
+		map[0].addCharacter(new MovingCharacter(1875, 1315, 32, 48, "pics/vx_chara01_a.png", 0, 4, "PNJ 3"));
+		map[0].addCharacter(new MovingCharacter(1700, 1250, 32, 48, "pics/vx_chara01_b.png", 0, 4, "PNJ 4"));
+		map[0].addCharacter(new MovingCharacter(1700, 1300, 32, 48, "pics/vx_chara01_b.png", 3, 0, "PNJ 5"));
+		map[0].addCharacter(new Character(1700, 1350, 32, 48, "pics/vx_chara01_b.png", 3, 4, "PNJ 6"));
+		map[0].addCharacter(new Character(1900, 1200, 32, 48, "pics/vx_chara02_a.png", 6, 4, "PNJ 7"));
+		map[0].addCharacter(new Character(1800, 1100, 32, 48, "pics/vx_chara02_b.png", 6, 4, "PNJ 8"));
+		map[0].addCharacter(new MovingCharacter(1850, 1200, 32, 48, "pics/vx_chara02_d.png", 6, 4, "PNJ 9"));
+		map[0].addCharacter(new Character(1835, 1100, 32, 48, "pics/vx_chara03_a.png", 6, 4, "PNJ 10"));
+		map[0].addCharacter(new MovingCharacter(1925, 1300, 32, 48, "pics/vx_chara03_b.png", 6, 4, "PNJ 11"));
+		map[0].addCharacter(new Character(1775, 1200, 32, 48, "pics/vx_chara03_c.png", 6, 4, "PNJ 12"));
+		map[0].addCharacter(new MovingCharacter(1750, 1300, 32, 48, "pics/vx_chara03_d.png", 3, 0, "PNJ 13"));
+		map[0].addCharacter(new Character(1725, 1100, 32, 48, "pics/vx_chara03_e.png", 6, 4, "PNJ 14"));
+		map[0].addCharacter(new MovingCharacter(1700, 1200, 32, 48, "pics/vx_chara03_f.png", 6, 4, "PNJ 15"));
+		map[0].addCharacter(new Character(1875, 1300, 32, 48, "pics/vx_chara03_g.png", 6, 4, "PNJ 16"));
 		map[currentMap].addCharacter(player);
 		
-		map[0].getCharacter(1).addDialog("collision", new String[] {"Attention !"});
-		map[0].getCharacter(2).addDialog("collision", new String[] {"Attention à toi !"});
-		map[0].getCharacter(3).addDialog("collision", new String[] {"Attention !"});
-		map[0].getCharacter(4).addDialog("collision", new String[] {"Attention !"});
-		map[0].getCharacter(5).addDialog("talk", new String[] {"Bla bla bla bla !"});
-		map[0].getCharacter(6).addDialog("talk", new String[] {"Bla bla bla bla !"});
+		// On donne des dialogues aux PNJ
+		map[0].getCharacter(1).addDialog("collision", new String[] {"Attention 1!"});
+		map[0].getCharacter(2).addDialog("collision", new String[] {"Attention à toi 2!"});
+		map[0].getCharacter(3).addDialog("collision", new String[] {"Attention 3!"});
+		map[0].getCharacter(4).addDialog("collision", new String[] {"Attention 4!"});
+		map[0].getCharacter(5).addDialog("talk", new String[] {"Bonjour !", "Comment ça va ?", "Cool !"});
+		map[0].getCharacter(6).addDialog("talk", new String[] {"Bla bla bla bla !", "Ok."});
 		map[0].getCharacter(7).addDialog("talk", new String[] {"Bla bla bla bla !"});
 		
 		
@@ -92,6 +94,9 @@ public class GameState extends GlobalState
 		Collections.sort(map[currentMap].getCharacters());
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.state.BasicGameState#enter(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
+	 */
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException 
 	{
@@ -101,6 +106,9 @@ public class GameState extends GlobalState
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.state.BasicGameState#leave(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
+	 */
 	@Override
 	public void leave(GameContainer container, StateBasedGame game) throws SlickException 
 	{
@@ -168,39 +176,6 @@ public class GameState extends GlobalState
 			drawDialog(g, dialog);
 		}
 	}
-	
-	public void drawDialog(Graphics g, String text)
-	{
-		g.setColor(Color.black);
-		g.fillRoundRect(0 - camera.getTransX(), 480 - camera.getTransY(), 800, 120, 5);
-		g.setColor(Color.white);
-		g.fillRoundRect(10 - camera.getTransX(), 490 - camera.getTransY(), 780, 100, 5);
-		g.setColor(Color.black);
-		g.drawString(text, 15 - camera.getTransX(), 500 - camera.getTransY());
-	}
-	
-	@Override
-	public void keyPressed(int key, char c) 
-	{
-		super.keyPressed(key, c);
-		if (key == Config.KEY_TALK.getValue())
-		{
-			if (dialog == null)
-			{
-				if (player.isEntityTalkable() != null)
-				{
-					if (player.isEntityTalkable().getDialog("talk") != null)
-					{
-						dialog = player.isEntityTalkable().getDialog("talk")[0];
-					}
-				}
-			}
-			else
-			{
-				dialog = null;
-			}
-		}
-	}
 
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.GameState#update(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, int)
@@ -224,7 +199,9 @@ public class GameState extends GlobalState
 			map[currentMap].removeCharacter(player);
 			currentMap = 1;
 			map[currentMap].addCharacter(player);
-			camera = new Camera(map[currentMap], mapWidth, mapHeight);
+			mapWidth = map[currentMap].getWidth() * map[currentMap].getTileWidth(); 
+			mapHeight = map[currentMap].getHeight() * map[currentMap].getTileHeight();
+			camera = new Camera(mapWidth, mapHeight);
 			player.setPosX(1200);
 			player.setPosY(2485);
 		}
@@ -233,9 +210,72 @@ public class GameState extends GlobalState
 			map[currentMap].removeCharacter(player);
 			currentMap = 0;
 			map[currentMap].addCharacter(player);
-			camera = new Camera(map[currentMap], mapWidth, mapHeight);
+			mapWidth = map[currentMap].getWidth() * map[currentMap].getTileWidth(); 
+			mapHeight = map[currentMap].getHeight() * map[currentMap].getTileHeight();
+			camera = new Camera(mapWidth, mapHeight);
 			player.setPosX(1406);
 			player.setPosY(968);
+		}
+		
+		// On met en pause le jeu si la fenêtre n'a pas le focus
+		if (!container.hasFocus())
+		{
+			super.startPause();
+		}
+	}
+	
+	/**
+	 * Draw a text dialog.
+	 *
+	 * @param g the graphics
+	 * @param text the text to draw
+	 */
+	public void drawDialog(Graphics g, String text)
+	{
+		g.setColor(Color.black);
+		g.fillRoundRect(0 - camera.getTransX(), 480 - camera.getTransY(), 800, 120, 5);
+		g.setColor(Color.white);
+		g.fillRoundRect(10 - camera.getTransX(), 490 - camera.getTransY(), 780, 100, 5);
+		g.setColor(Color.black);
+		g.drawString(text, 15 - camera.getTransX(), 500 - camera.getTransY());
+	}
+	
+	@Override
+	public void keyPressed(int key, char c) 
+	{
+		super.keyPressed(key, c);
+		if (key == Config.KEY_TALK.getValue())
+		{
+			if (player.isEntityTalkable() != null && player.isEntityTalkable().getDialog("talk") != null)
+			{
+				boolean vNext = false;
+				String[] vDialogs = player.isEntityTalkable().getDialog("talk");
+				if (dialog == null)
+				{
+					dialog = player.isEntityTalkable().getName() + " : " + vDialogs[0];
+					return;
+				}
+				for (String vDialog : vDialogs)
+				{
+					if (vNext)
+					{
+						dialog = player.isEntityTalkable().getName() + " : " + vDialog;
+						return;
+					}
+					if ((player.isEntityTalkable().getName() + " : " + vDialog).equals(dialog))
+					{
+						vNext = true;
+					}
+				}
+				if (vNext && !dialog.equals( player.isEntityTalkable().getName() + " : " + vDialogs[vDialogs.length - 1] ) )
+				{
+					dialog = player.isEntityTalkable().getName() + " : " + vDialogs[vDialogs.length - 1];
+				}
+				else
+				{
+					dialog = null;
+				}
+			}
 		}
 	}
 
@@ -258,7 +298,7 @@ public class GameState extends GlobalState
 	}
 
 	/**
-	 * @return the characters
+	 * @return the characters list
 	 */
 	public static ArrayList<Entity> getCharacters() 
 	{

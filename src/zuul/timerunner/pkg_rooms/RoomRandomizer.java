@@ -24,7 +24,7 @@ public class RoomRandomizer
      * Instantiates a new room randomizer.
      * It convert a HashMap in a array.
      *
-     * @param pListeRoom the liste room
+     * @param pListRoom the liste room
      */
     public RoomRandomizer(final HashMap <String,Room> pListRoom)
     {

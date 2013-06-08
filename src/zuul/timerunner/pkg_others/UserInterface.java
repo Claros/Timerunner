@@ -83,7 +83,7 @@ public class UserInterface implements ActionListener, KeyEventDispatcher
     
     /**
      * Enable the buttonn where an exit exist
-     * @param the exits list
+     * @param pExits the exits list
      */
     public void enableButton(final HashMap<String,Room> pExits)
     {

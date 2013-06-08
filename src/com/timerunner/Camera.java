@@ -2,7 +2,8 @@ package com.timerunner;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.tiled.TiledMap;
+
+import com.timerunner.entities.Player;
  
 /**
  * The Class Camera.
@@ -23,11 +24,10 @@ public class Camera
 	/**
 	 * Instantiates a new camera.
 	 *
-	 * @param map the map
 	 * @param mapWidth the map width
 	 * @param mapHeight the map height
 	 */
-	public Camera(TiledMap map, int mapWidth, int mapHeight) 
+	public Camera(int mapWidth, int mapHeight) 
 	{
 		transX = 0;
 		transY = 0;
