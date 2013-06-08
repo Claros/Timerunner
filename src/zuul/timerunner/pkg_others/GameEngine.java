@@ -85,10 +85,10 @@ public class GameEngine
         cour = new Room("in the castle courtyard", "cour.png");
         tourDeGuet = new Room("near the watchtower", "tour2.png");
         tourDeGarde = new Room("near the guard tower", "tour1.png");
-        chateau = new Room("inside the castle", "stairs.gif");
-        salleAManger = new Room("in the dining room", "hallway.gif");
-        trone = new Room("in the throne room of the King", "throne-room.gif");
-        salleDuTresor = new Room("in the treasure room", "dungeon.gif");
+        chateau = new Room("inside the castle", "chateau.png");
+        salleAManger = new Room("in the dining room", "dinning-room.png");
+        trone = new Room("in the throne room of the King", "throne-room.png");
+        salleDuTresor = new Room("in the treasure room", "treasure.png");
         
         // initialise room exits
         cour.setExit("east",tourDeGarde );

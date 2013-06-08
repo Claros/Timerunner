@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 //import java.net.URL;
 import java.awt.event.KeyEvent;
+import java.net.URL;
 import java.util.HashMap;
 import zuul.timerunner.pkg_rooms.Room;
 
@@ -59,8 +60,12 @@ public class UserInterface implements ActionListener, KeyEventDispatcher
      */
     public void showImage(final String imageName)
     {
-        //URL imageURL = this.getClass().getResource(imageName);
-        ImageIcon icon = new ImageIcon(imageName);
+        URL imageURL = this.getClass().getResource(imageName);
+        if (imageURL == null)
+        {
+        	return;
+        }
+        ImageIcon icon = new ImageIcon(imageURL);
         //ImageIcon icon = new ImageIcon(imageURL);
         image.setIcon(icon);
         myFrame.pack();
