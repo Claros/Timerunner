@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.tiled.TiledMap;
 
 import com.timerunner.entities.Entity;
@@ -51,16 +52,32 @@ public class Map extends TiledMap
 		characters = new ArrayList<Entity>();
 	}
 	
+	/**
+	 * Adds an entity to the map 
+	 *
+	 * @param pEntity the entity
+	 */
 	public void addCharacter(final Entity pEntity)
 	{
 		characters.add(pEntity);
 	}
 	
+	/**
+	 * Removes an entity from the map.
+	 *
+	 * @param pEntity the entity
+	 */
 	public void removeCharacter(final Entity pEntity)
 	{
 		characters.remove(pEntity);
 	}
 	
+	/**
+	 * Gets an entity from the map.
+	 *
+	 * @param pI the index of the entity
+	 * @return the entity
+	 */
 	public Entity getCharacter(final int pI)
 	{
 		return characters.get(pI);
@@ -89,14 +106,14 @@ public class Map extends TiledMap
 	/**
 	 * Checks if is tile blocked.
 	 *
-	 * @param rPlayer the player
+	 * @param pShape the shape
 	 * @return true, if tile is blocked
 	 */
-	public boolean isTileBlocked(Rectangle rPlayer) 
+	public boolean isTileBlocked(final Shape pShape) 
 	{ 
 		for (Rectangle r : blockedTile)
 		{
-			if (r.intersects(rPlayer))
+			if (r.intersects(pShape))
 			{
 				return true;
 			}

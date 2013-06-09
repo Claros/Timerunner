@@ -9,6 +9,7 @@ import org.newdawn.slick.geom.Vector2f;
 
 import com.timerunner.Config;
 import com.timerunner.Map;
+import com.timerunner.Shoot;
 import com.timerunner.states.GameState;
 
 /**
@@ -18,6 +19,8 @@ import com.timerunner.states.GameState;
 public class Player extends Entity
 { 
 	private Entity entityContact;
+	/** The shoot */
+	private Shoot shoot;
 	
 	/**
 	 * Instantiates a new player.
@@ -107,5 +110,28 @@ public class Player extends Entity
 			}
 		}
 		return null;
+	}
+	
+	public void shoot()
+	{
+		if (this.shoot == null)
+		{
+			this.shoot = new Shoot(super.pos.x+10, super.pos.y+10);
+		}
+	}
+	
+	public Shoot getShoot()
+	{
+		return this.shoot;
+	}
+	
+	public void finishShoot()
+	{
+		this.shoot = null;
+	}
+	
+	public boolean isShooting()
+	{
+		return (this.shoot != null);
 	}
 }

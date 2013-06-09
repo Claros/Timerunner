@@ -12,6 +12,7 @@ import com.timerunner.Map;
  */
 public class MovingCharacter extends Character 
 {
+	/** Last time move */
 	public long lastMove;
 
 	/**

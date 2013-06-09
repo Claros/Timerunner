@@ -13,11 +13,12 @@ import java.util.Properties;
  */
 public enum Config 
 {
-	KEY_RIGHT("right", 32), 
-	KEY_LEFT("left", 16),
-	KEY_UP("up", 44), 
-	KEY_DOWN("down", 31),
-	KEY_TALK("talk", 45),
+	KEY_RIGHT("right", 205), 
+	KEY_LEFT("left", 203),
+	KEY_UP("up", 200), 
+	KEY_DOWN("down", 208),
+	KEY_TALK("talk", 46),
+	KEY_SHOOT("shoot", 57),
 	// Spawn : 50, 3100
 	POS_X("posx", 50),
 	POS_Y("posy", 3100),
@@ -80,6 +81,7 @@ public enum Config
 			prop.setProperty("up", "" + Config.KEY_UP.getValue());
 			prop.setProperty("down", "" + Config.KEY_DOWN.getValue());
 			prop.setProperty("talk", "" + Config.KEY_TALK.getValue());
+			prop.setProperty("shoot", "" + Config.KEY_SHOOT.getValue());
 			prop.setProperty("posx", "" + Config.POS_X.getValue());
 			prop.setProperty("posy", "" + Config.POS_Y.getValue());
 			prop.setProperty("cmap", "" + Config.CURRENT_MAP.getValue());
@@ -99,10 +101,21 @@ public enum Config
 		try 
 		{
 			prop.load(new FileInputStream("./config.properties"));
-			
+			boolean rewrite = false;
 			for (final Config config : values())
 			{
-				config.setValue( Integer.parseInt( prop.getProperty(config.getProperty()) ) );
+				if (prop.getProperty(config.getProperty()) != null)
+				{
+					config.setValue( Integer.parseInt( prop.getProperty(config.getProperty()) ) );
+				}
+				else
+				{
+					rewrite = true;
+				}
+			}
+			if (rewrite)
+			{
+				Config.writeFile();
 			}
 		} catch (FileNotFoundException ex) 
 		{

@@ -6,8 +6,8 @@ import java.util.Collections;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -27,17 +27,25 @@ import com.timerunner.entities.Player;
 public class GameState extends GlobalState
 {
 	public static final int ID = 1;
-    
-    private int mapHeight, mapWidth;    
+    /** The map height. */ 
+    private int mapHeight, mapWidth;   
+    /** The player */ 
     private Player player;
-    private Camera camera;
-	private Music background;
+    /** The camera */ 
+    public static Camera camera;
+    /** The sound of a shoot */ 
+    private Sound shoot;
+    /** The array of the maps */ 
     private static Map[] map;
+    /** The graphics */ 
     private Graphics renderGraphics;
-    //private static ArrayList<Entity> characters;
+    /** The dialog to draw */
     private String dialog;
+    /** The index of the current map */ 
     private static int currentMap;
+    /** The box to go from the outside to the inside */
     private Rectangle extVersInt;
+    /** The box to go from the inside to the outside */
     private Rectangle intVersExt;
 
 	/* (non-Javadoc)
@@ -47,46 +55,75 @@ public class GameState extends GlobalState
 	public void init(GameContainer container, StateBasedGame game) throws SlickException 
 	{
 		super.init(container, game);
-		this.background = new Music("res/military.xm");
+		this.shoot = new Sound("res/shoot.wav");
 		
-		currentMap = Config.CURRENT_MAP.getValue();
+		currentMap = (Config.CURRENT_MAP.getValue() < 2 ? Config.CURRENT_MAP.getValue() : 0);
 		player = new Player(Config.POS_X.getValue(), Config.POS_Y.getValue(), 32, 48, "pics/vx_chara02_c.png", 6, 4, "");
 		
 		map = new Map[] {new Map("res/map_moyen_age_exterieur.tmx"), new Map("res/map_moyen_age_interieur.tmx")};
 		extVersInt = new Rectangle(1375, 927, map[0].getTileWidth()*4, map[0].getTileHeight());
-		intVersExt = new Rectangle(970, 2615, map[0].getTileWidth()*16, map[0].getTileHeight());
+		intVersExt = new Rectangle(970, 2510, map[0].getTileWidth()*16, map[0].getTileHeight());
 		// Map size = Tile Size * number of Tiles
 		mapWidth = map[currentMap].getWidth() * map[currentMap].getTileWidth(); 
 		mapHeight = map[currentMap].getHeight() * map[currentMap].getTileHeight();
 		camera = new Camera(mapWidth, mapHeight);
 		
 		// Initialisation des tous les PNJ
-		map[0].addCharacter(new Character(1875, 1515, 32, 48, "pics/vx_chara01_a.png", 0, 0, "PNJ 1"));
-		map[0].addCharacter(new MovingCharacter(1875, 1215, 32, 48, "pics/vx_chara01_a.png", 3, 0, "PNJ 2"));
-		map[0].addCharacter(new MovingCharacter(1875, 1315, 32, 48, "pics/vx_chara01_a.png", 0, 4, "PNJ 3"));
-		map[0].addCharacter(new MovingCharacter(1700, 1250, 32, 48, "pics/vx_chara01_b.png", 0, 4, "PNJ 4"));
-		map[0].addCharacter(new MovingCharacter(1700, 1300, 32, 48, "pics/vx_chara01_b.png", 3, 0, "PNJ 5"));
-		map[0].addCharacter(new Character(1700, 1350, 32, 48, "pics/vx_chara01_b.png", 3, 4, "PNJ 6"));
-		map[0].addCharacter(new Character(1900, 1200, 32, 48, "pics/vx_chara02_a.png", 6, 4, "PNJ 7"));
-		map[0].addCharacter(new Character(1800, 1100, 32, 48, "pics/vx_chara02_b.png", 6, 4, "PNJ 8"));
-		map[0].addCharacter(new MovingCharacter(1850, 1200, 32, 48, "pics/vx_chara02_d.png", 6, 4, "PNJ 9"));
-		map[0].addCharacter(new Character(1835, 1100, 32, 48, "pics/vx_chara03_a.png", 6, 4, "PNJ 10"));
-		map[0].addCharacter(new MovingCharacter(1925, 1300, 32, 48, "pics/vx_chara03_b.png", 6, 4, "PNJ 11"));
-		map[0].addCharacter(new Character(1775, 1200, 32, 48, "pics/vx_chara03_c.png", 6, 4, "PNJ 12"));
-		map[0].addCharacter(new MovingCharacter(1750, 1300, 32, 48, "pics/vx_chara03_d.png", 3, 0, "PNJ 13"));
-		map[0].addCharacter(new Character(1725, 1100, 32, 48, "pics/vx_chara03_e.png", 6, 4, "PNJ 14"));
-		map[0].addCharacter(new MovingCharacter(1700, 1200, 32, 48, "pics/vx_chara03_f.png", 6, 4, "PNJ 15"));
-		map[0].addCharacter(new Character(1875, 1300, 32, 48, "pics/vx_chara03_g.png", 6, 4, "PNJ 16"));
+		map[0].addCharacter(new Character(325, 2850, 32, 48, "pics/vx_chara02_c.png", 9, 0, "  ?", 999, 999, 999));
+		map[0].addCharacter(new Character(1792, 1725, 32, 48, "pics/vx_chara01_a.png", 0, 4, " Garde 1"));
+		map[0].addCharacter(new Character(1870, 1725, 32, 48, "pics/vx_chara01_a.png", 0, 0, " Garde 2"));
+		map[0].addCharacter(new Character(1948, 1725, 32, 48, "pics/vx_chara01_a.png", 0, 4, " Garde 3"));
+		map[0].addCharacter(new Character(1375, 935, 32, 48, "pics/vx_chara01_a.png", 0, 4, " Garde 4"));
+		map[0].addCharacter(new Character(1425, 935, 32, 48, "pics/vx_chara01_a.png", 0, 0, " Garde 5"));
+		map[0].addCharacter(new Character(1475, 935, 32, 48, "pics/vx_chara01_a.png", 0, 4, " Garde 6"));
+		map[0].addCharacter(new MovingCharacter(2165, 1031, 32, 48, "pics/vx_chara03_a.png", 0, 4, "Villageois 1"));
+		map[0].addCharacter(new MovingCharacter(2363, 1028, 32, 48, "pics/vx_chara03_b.png", 0, 4, "Villageois 2"));
+		map[0].addCharacter(new MovingCharacter(2333, 883, 32, 48, "pics/vx_chara03_b.png", 9, 0, "Villageois 3"));
+		map[0].addCharacter(new MovingCharacter(1747, 1026, 32, 48, "pics/vx_chara03_a.png", 9, 0, "Villageois 4"));
+		map[0].addCharacter(new MovingCharacter(1131, 1137, 32, 48, "pics/vx_chara03_a.png", 6, 0, "Villageois 5"));
+		
+		map[1].addCharacter(new Character(1183, 128, 32, 48, "pics/vx_chara02_c.png", 3, 0, " Roi"));
+		map[1].addCharacter(new Character(1216, 128, 32, 48, "pics/vx_chara02_c.png", 6, 0, "  Reine"));
+		map[1].addCharacter(new MovingCharacter(1769, 147, 32, 48, "pics/vx_chara02_a.png", 9, 0, "Cuisinier"));
+		map[1].addCharacter(new MovingCharacter(2093, 175, 32, 48, "pics/vx_chara02_a.png", 9, 4, "Boucher"));
+		map[1].addCharacter(new MovingCharacter(168, 1374, 32, 48, "pics/vx_chara01_a.png", 0, 4, " Garde 7"));
+		map[1].addCharacter(new MovingCharacter(405, 1442, 32, 48, "pics/vx_chara01_a.png", 0, 0, " Garde 8"));
+		map[1].addCharacter(new MovingCharacter(603, 1340, 32, 48, "pics/vx_chara01_a.png", 0, 4, " Garde 9"));
+		map[1].addCharacter(new Character(2207, 1834, 32, 48, "pics/vx_chara02_b.png", 0, 0, "Alchimiste"));
+		map[1].addCharacter(new Character(515, 137, 32, 48, "pics/vx_chara01_b.png", 0, 4, " Voleur"));
+		map[1].addCharacter(new MovingCharacter(74, 581, 32, 48, "pics/vx_chara02_c.png", 9, 4, "Nourrice 1"));
+		map[1].addCharacter(new MovingCharacter(493, 666, 32, 48, "pics/vx_chara02_c.png", 9, 4, "Nourrice 2"));
+		
 		map[currentMap].addCharacter(player);
 		
 		// On donne des dialogues aux PNJ
-		map[0].getCharacter(1).addDialog("collision", new String[] {"Attention 1!"});
-		map[0].getCharacter(2).addDialog("collision", new String[] {"Attention à toi 2!"});
-		map[0].getCharacter(3).addDialog("collision", new String[] {"Attention 3!"});
-		map[0].getCharacter(4).addDialog("collision", new String[] {"Attention 4!"});
-		map[0].getCharacter(5).addDialog("talk", new String[] {"Bonjour !", "Comment ça va ?", "Cool !"});
-		map[0].getCharacter(6).addDialog("talk", new String[] {"Bla bla bla bla !", "Ok."});
-		map[0].getCharacter(7).addDialog("talk", new String[] {"Bla bla bla bla !"});
+		map[0].getCharacter(0).addDialog("talk", new String[] {
+			"Bonjour Time Runner.", 
+			"Utilise les flèches pour te déplacer. :p", 
+			"Pour parler appuies sur C. :p", 
+			"Pour tirer appuies sur espace.",
+			"Pour couper le son appuies sur F2.",
+			"Pour mettre en pause le jeu appuies sur échap.",
+			"Sinon tu es perdu au Moyen âge.",
+			"Il y a un château au nord."
+		});
+		map[0].getCharacter(1).addDialog("talk", new String[] {"Bouge de là !"});
+		map[0].getCharacter(2).addDialog("talk", new String[] {"T'es qui toi ?!"});
+		map[0].getCharacter(3).addDialog("talk", new String[] {"Bouge de là !"});
+		map[0].getCharacter(4).addDialog("talk", new String[] {"Bouge de là !"});
+		map[0].getCharacter(5).addDialog("talk", new String[] {"T'es qui toi ?!"});
+		map[0].getCharacter(6).addDialog("talk", new String[] {"Bouge de là !"});
+		map[0].getCharacter(7).addDialog("collision", new String[] {"Attention à toi !"});
+		
+		map[1].getCharacter(0).addDialog("talk", new String[] {
+				"Comment osez-vous déranger sa majesté ?!", 
+				"Que voulez-vous ?",
+				"Très bien.",
+				"Qu'il en soit ainsi."
+			});
+		map[1].getCharacter(1).addDialog("talk", new String[] { "Parlez à mon époux." });
+		map[1].getCharacter(7).addDialog("talk", new String[] { "Boum !" });
+		map[1].getCharacter(8).addDialog("talk", new String[] { "Je ne trouve pas le trésor..." });
 		
 		
 		// On trie la collection en fonction de la position y...
@@ -100,7 +137,7 @@ public class GameState extends GlobalState
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException 
 	{
-		if (!this.background.playing())
+		if (!super.background.playing() && PLAYMUSIQUE)
 		{
 			this.background.loop();
 		}
@@ -136,7 +173,7 @@ public class GameState extends GlobalState
 		for (Entity chara : map[currentMap].getCharacters())
 		{
 			chara.render();
-			g.drawString(chara.getName(), chara.getX(), chara.getY()-12);
+			g.drawString(chara.getName(), chara.getX() - ((chara.getName().length()*6)/2), chara.getY()-15);
 		}
 		
 		map[currentMap].render(0, 0, map[currentMap].getLayerCount()-1);
@@ -175,6 +212,11 @@ public class GameState extends GlobalState
 		{
 			drawDialog(g, dialog);
 		}
+		
+		if (player.isShooting())
+		{
+			player.getShoot().render(g);
+		}
 	}
 
 	/* (non-Javadoc)
@@ -203,7 +245,7 @@ public class GameState extends GlobalState
 			mapHeight = map[currentMap].getHeight() * map[currentMap].getTileHeight();
 			camera = new Camera(mapWidth, mapHeight);
 			player.setPosX(1200);
-			player.setPosY(2485);
+			player.setPosY(2405);
 		}
 		else if (currentMap == 1 && player.getBox().intersects(intVersExt))
 		{
@@ -213,7 +255,7 @@ public class GameState extends GlobalState
 			mapWidth = map[currentMap].getWidth() * map[currentMap].getTileWidth(); 
 			mapHeight = map[currentMap].getHeight() * map[currentMap].getTileHeight();
 			camera = new Camera(mapWidth, mapHeight);
-			player.setPosX(1406);
+			player.setPosX(1426);
 			player.setPosY(968);
 		}
 		
@@ -221,6 +263,22 @@ public class GameState extends GlobalState
 		if (!container.hasFocus())
 		{
 			super.startPause();
+		}
+		
+		if (player.isShooting())
+		{
+			if (player.getShoot().update(delta, player, mapWidth, mapHeight, map[currentMap]))
+			{
+				if (player.getEntityHited() != null)
+				{
+					player.getEntityHited().subStatLife(1);
+					if (player.getEntityHited().getStatLife() == 0)
+					{
+						System.out.println(map[currentMap].getCharacters().remove(player.getEntityHited()));
+					}
+				}
+				player.finishShoot();
+			}
 		}
 	}
 	
@@ -275,6 +333,20 @@ public class GameState extends GlobalState
 				{
 					dialog = null;
 				}
+			}
+			else if (player.isEntityTalkable() == null && dialog != null)
+			{
+				dialog = null;
+			}
+		} else if (key == Config.KEY_SHOOT.getValue() && dialog == null)
+		{
+			if (!player.isShooting())
+			{
+				if (PLAYMUSIQUE)
+				{
+					shoot.play();
+				}
+				player.shoot();
 			}
 		}
 	}

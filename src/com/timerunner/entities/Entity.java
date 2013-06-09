@@ -9,6 +9,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Vector2f;
 
 import com.timerunner.Map;
@@ -20,20 +21,34 @@ import com.timerunner.states.GameState;
  */
 public abstract class Entity implements Comparable<Entity>
 {
+	
+	/** The position of the entity. */
 	protected Vector2f pos; // Vector contains a value with components x &amp; y
-	protected Rectangle box; // Vector contains a value with components x &amp; y
+	/** The box used for the collision with objects and others entities */
+	protected Rectangle box;
+	/** The box used to receive damage */
 	protected Rectangle hitbox;
+	/** The sprite sheet */
 	protected SpriteSheet sprite;
+	/** The animation sheet when the entity is moving */
     private Animation[] courir;
+	/** The animation sheet when the entity is not moving */
     private Image[] repos;
+	/** The direction where the entity go */
     private String direction = "bas";
+    /** The running state */
     private boolean isRunning = false;
+    /** The last entity touched */
     private Entity entityColliding;
+    /** The last entity hited */
+    private Entity entityHited;
+    /** The dialogs */
 	private HashMap<String,String[]> aDialogs;
 	
 	protected int statStrength;
 	protected int statLife;
 	protected int statDefense;
+    /** The name */
 	private String name;
  
 	/**
@@ -142,7 +157,7 @@ public abstract class Entity implements Comparable<Entity>
 		box.setLocation(pos.x+trans.x, pos.y+36+trans.y);
 		hitbox.setLocation(pos.x+trans.x, pos.y+trans.y);
 		
-		if( (pos.x + trans.x) > 0 && (pos.x + trans.x) < (mapWidth-32) && !map.isTileBlocked(box) && !isEntityHere())
+		if( (pos.x + trans.x) > 0 && (pos.x + trans.x) < (mapWidth-32) && !map.isTileBlocked(box) && !isEntityHere(box))
 		{// Is the player inside the map? (We add (subtract) because of the stone wall) 			
 			pos.x += trans.x; 
 		}
@@ -154,7 +169,7 @@ public abstract class Entity implements Comparable<Entity>
 			setRunning(false);
 		}
 		
-		if( (pos.y+trans.y) > 0 && (pos.y+trans.y) < (mapHeight-48) && !map.isTileBlocked(box) && !isEntityHere())
+		if( (pos.y+trans.y) > 0 && (pos.y+trans.y) < (mapHeight-48) && !map.isTileBlocked(box) && !isEntityHere(box))
 		{
 			pos.y += trans.y;
 		}
@@ -174,14 +189,14 @@ public abstract class Entity implements Comparable<Entity>
 	 *
 	 * @return true, if there is an entity colliding with the current entity
 	 */
-	public boolean isEntityHere()
+	public boolean isEntityHere(final Shape pBox)
 	{
 		ArrayList<Entity> entities = new ArrayList<Entity> ( GameState.getCharacters() );
 		// On retire l'entity courante
 		entities.remove(this);
 		for (Entity e : entities)
 		{
-			if (box.intersects(e.getBox()))
+			if (pBox.intersects(e.getBox()))
 			{
 				entityColliding = e;
 				return true;
@@ -191,6 +206,31 @@ public abstract class Entity implements Comparable<Entity>
 		return false;
 	}
 	
+	public boolean isEntityHited(final Shape pBox)
+	{
+		ArrayList<Entity> entities = new ArrayList<Entity> ( GameState.getCharacters() );
+		// On retire l'entity courante
+		entities.remove(this);
+		for (Entity e : entities)
+		{
+			if (pBox.intersects(e.getHitbox()))
+			{
+				entityHited = e;
+				return true;
+			}
+		}
+		entityHited = null;
+		return false;
+	}
+	
+	/**
+	 * @return Entity the entityHited
+	 */
+	public Entity getEntityHited() 
+	{
+		return entityHited;
+	}
+
 	/**
 	 * Adds a text dialog au character.
 	 *
@@ -425,6 +465,39 @@ public abstract class Entity implements Comparable<Entity>
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return the statStrength
+	 */
+	public int getStatStrength() {
+		return statStrength;
+	}
+
+	/**
+	 * @return the statDefense
+	 */
+	public int getStatDefense() {
+		return statDefense;
+	}
+
+	/**
+	 * @return the statLife
+	 */
+	public int getStatLife() {
+		return statLife;
+	}
+
+	/**
+	 * @param statLife the statLife to set
+	 */
+	public void setStatLife(final int statLife) {
+		this.statLife = statLife;
+	}
+	
+	public void subStatLife(final int statLife)
+	{
+		this.statLife -= statLife;
 	}
 
 	/** 

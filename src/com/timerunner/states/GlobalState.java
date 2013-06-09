@@ -5,6 +5,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -23,6 +24,8 @@ public abstract class GlobalState extends BasicGameState
 	protected StateBasedGame game;
 	public static int pauseId = 0;
 	private static Image screen;
+	public static boolean PLAYMUSIQUE = true;
+	protected Music background;
 
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.GameState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
@@ -31,6 +34,7 @@ public abstract class GlobalState extends BasicGameState
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException 
 	{
 		game = arg1;
+		this.background = new Music("res/military.xm");
 		GlobalState.screen = new Image(Game.WIDTH, Game.HEIGHT);
 	}
 
@@ -55,6 +59,18 @@ public abstract class GlobalState extends BasicGameState
 				Game.DEBUG = !Game.DEBUG;
 				Game.container.setShowFPS(Game.DEBUG);
 			break;
+			// Touche F2, active/desactive la musique
+			case Input.KEY_F2 :
+				PLAYMUSIQUE = !PLAYMUSIQUE;
+				if (PLAYMUSIQUE)
+				{
+					background.loop();
+				}
+				else
+				{
+					background.stop();
+				}
+			break;
 		}
 	}
  
@@ -74,6 +90,9 @@ public abstract class GlobalState extends BasicGameState
 	@Override
 	public abstract int getID();
 	
+	/**
+	 * Start pause.
+	 */
 	public void startPause()
 	{
 		if (this.getID() != PauseMenuState.ID)

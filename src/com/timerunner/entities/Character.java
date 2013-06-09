@@ -28,10 +28,31 @@ public class Character extends Entity
 	 */
 	public Character(float x, float y, int width, int height, String sprite, int spriteX, int spriteY, String pName) throws SlickException 
 	{
+		this(x, y, width, height, sprite, spriteX, spriteY, pName, 5, 10, 10);
+	}
+	
+	/**
+	 * Instantiates a new character.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param width the width
+	 * @param height the height
+	 * @param sprite the sprite
+	 * @param spriteX the sprite x
+	 * @param spriteY the sprite y
+	 * @param pName the name
+	 * @param pLife the life
+	 * @param pStr the strengh
+	 * @param pDef the defense
+	 * @throws SlickException the slick exception
+	 */
+	public Character(float x, float y, int width, int height, String sprite, int spriteX, int spriteY, String pName, int pLife, int pStr, int pDef) throws SlickException 
+	{
 		super(x, y, width, height, sprite, spriteX, spriteY, pName);
-		super.statLife = 30;
-		super.statStrength = 10;
-		super.statDefense = 10;
+		super.statLife = pLife;
+		super.statStrength = pStr;
+		super.statDefense = pDef;
 	}
 
 	/* (non-Javadoc)
