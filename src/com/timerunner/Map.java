@@ -120,4 +120,16 @@ public class Map extends TiledMap
 		}
 		return false;
 	}
+	
+	public boolean isCharacterDead(final String pName)
+	{
+		for (Entity vE : characters)
+		{
+			if (vE.getName().equals(pName))
+			{
+				return false;
+			}
+		}
+		return true;
+	}
 }

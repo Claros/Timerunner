@@ -43,7 +43,7 @@ public class PauseMenuState extends GlobalState implements ComponentListener
 		if (source == play) 
 		{
 			//game.enterState(GameState.ID);
-			resumeState(new FadeOutTransition(Color.black), new FadeInTransition(Color.black)); 
+			resumeState(new FadeOutTransition(new Color (0.2f, 0.2f, 0.2f, 0.5f)), new FadeInTransition(new Color (0.2f, 0.2f, 0.2f, 0.5f))); 
 		}
 		if (source == restart) 
 		{

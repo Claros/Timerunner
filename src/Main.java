@@ -26,7 +26,7 @@ public class Main implements ActionListener
 	private JFrame aFrame;
 	private JButton aZuul, aSlick;
 	//TODO Changer la version à chaque upload
-	public static final int VERSION = 4;
+	public static final int VERSION = 5;
 	
 	public Main()
 	{

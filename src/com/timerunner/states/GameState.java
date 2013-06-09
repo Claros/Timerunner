@@ -47,6 +47,9 @@ public class GameState extends GlobalState
     private Rectangle extVersInt;
     /** The box to go from the inside to the outside */
     private Rectangle intVersExt;
+    
+    /** Script variable  */
+    private boolean hasTin = false;
 
 	/* (non-Javadoc)
 	 * @see com.timerunner.states.GlobalState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
@@ -81,6 +84,7 @@ public class GameState extends GlobalState
 		map[0].addCharacter(new MovingCharacter(2333, 883, 32, 48, "pics/vx_chara03_b.png", 9, 0, "Villageois 3"));
 		map[0].addCharacter(new MovingCharacter(1747, 1026, 32, 48, "pics/vx_chara03_a.png", 9, 0, "Villageois 4"));
 		map[0].addCharacter(new MovingCharacter(1131, 1137, 32, 48, "pics/vx_chara03_a.png", 6, 0, "Villageois 5"));
+		map[0].addCharacter(new MovingCharacter(611, 1350, 32, 48, "pics/vx_chara01_a.png", 0, 4, " Garde 10"));
 		
 		map[1].addCharacter(new Character(1183, 128, 32, 48, "pics/vx_chara02_c.png", 3, 0, " Roi"));
 		map[1].addCharacter(new Character(1216, 128, 32, 48, "pics/vx_chara02_c.png", 6, 0, "  Reine"));
@@ -110,9 +114,9 @@ public class GameState extends GlobalState
 		map[0].getCharacter(1).addDialog("talk", new String[] {"Bouge de là !"});
 		map[0].getCharacter(2).addDialog("talk", new String[] {"T'es qui toi ?!"});
 		map[0].getCharacter(3).addDialog("talk", new String[] {"Bouge de là !"});
-		map[0].getCharacter(4).addDialog("talk", new String[] {"Bouge de là !"});
+		map[0].getCharacter(4).addDialog("talk", new String[] {"Eloigne toi du château !"});
 		map[0].getCharacter(5).addDialog("talk", new String[] {"T'es qui toi ?!"});
-		map[0].getCharacter(6).addDialog("talk", new String[] {"Bouge de là !"});
+		map[0].getCharacter(6).addDialog("talk", new String[] {"Nous vivant, vous ne pourrez pas entrer ! !"});
 		map[0].getCharacter(7).addDialog("collision", new String[] {"Attention à toi !"});
 		
 		map[1].getCharacter(0).addDialog("talk", new String[] {
@@ -123,7 +127,11 @@ public class GameState extends GlobalState
 			});
 		map[1].getCharacter(1).addDialog("talk", new String[] { "Parlez à mon époux." });
 		map[1].getCharacter(7).addDialog("talk", new String[] { "Boum !" });
-		map[1].getCharacter(8).addDialog("talk", new String[] { "Je ne trouve pas le trésor..." });
+		map[1].getCharacter(8).addDialog("talk", new String[] { 
+				"Je ne trouve pas le trésor...", 
+				"La seule chose qu'il y a c'est ce métal...", 
+				"Je te donne ce bout d'etain !"
+			});
 		
 		
 		// On trie la collection en fonction de la position y...
@@ -236,7 +244,7 @@ public class GameState extends GlobalState
 		Collections.sort(map[currentMap].getCharacters());
 		
 		// Si le joueur passe la porte pour changer de map...
-		if (currentMap == 0 && player.getBox().intersects(extVersInt))
+		if (currentMap == 0 && player.getBox().intersects(extVersInt) && map[0].isCharacterDead(" Garde 4") && map[0].isCharacterDead(" Garde 5") && map[0].isCharacterDead(" Garde 6"))
 		{
 			map[currentMap].removeCharacter(player);
 			currentMap = 1;
@@ -274,7 +282,7 @@ public class GameState extends GlobalState
 					player.getEntityHited().subStatLife(1);
 					if (player.getEntityHited().getStatLife() == 0)
 					{
-						System.out.println(map[currentMap].getCharacters().remove(player.getEntityHited()));
+						map[currentMap].getCharacters().remove(player.getEntityHited());
 					}
 				}
 				player.finishShoot();
@@ -308,11 +316,20 @@ public class GameState extends GlobalState
 			{
 				boolean vNext = false;
 				String[] vDialogs = player.isEntityTalkable().getDialog("talk");
+				
+				if (vDialogs[0].equals("Boum !") && hasTin && dialog == null)
+				{
+					dialog = player.isEntityTalkable().getName() + " : Voilà j'ai fait fondre ton étain ! Tu as réparé la télécommande !";
+					return;
+				}
+				
+				// On récupère la première phrase si y'en a pas déjà
 				if (dialog == null)
 				{
 					dialog = player.isEntityTalkable().getName() + " : " + vDialogs[0];
 					return;
 				}
+				// Sinon on cherche la phrase suivante
 				for (String vDialog : vDialogs)
 				{
 					if (vNext)
@@ -325,12 +342,17 @@ public class GameState extends GlobalState
 						vNext = true;
 					}
 				}
+				// On rajoute la dernière phrase
 				if (vNext && !dialog.equals( player.isEntityTalkable().getName() + " : " + vDialogs[vDialogs.length - 1] ) )
 				{
 					dialog = player.isEntityTalkable().getName() + " : " + vDialogs[vDialogs.length - 1];
 				}
 				else
 				{
+					if (dialog.equals(" Voleur : Je te donne ce bout d'etain !"))
+					{
+						hasTin = true;
+					}
 					dialog = null;
 				}
 			}

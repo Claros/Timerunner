@@ -100,6 +100,10 @@ public abstract class GlobalState extends BasicGameState
 			getGraphics().copyArea(GlobalState.screen, 0, 0);
 			pauseState(this.getID(), PauseMenuState.ID, new FadeOutTransition(new Color (0.2f, 0.2f, 0.2f, 0.5f)), new FadeInTransition(new Color (0.2f, 0.2f, 0.2f, 0.5f)));
 		}
+		else
+		{
+			resumeState(new FadeOutTransition(new Color (0.2f, 0.2f, 0.2f, 0.5f)), new FadeInTransition(new Color (0.2f, 0.2f, 0.2f, 0.5f))); 
+		}
 	}
 	
 	/**
