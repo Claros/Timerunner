@@ -118,6 +118,11 @@ public class GameState extends GlobalState
 		map[0].getCharacter(5).addDialog("talk", new String[] {"T'es qui toi ?!"});
 		map[0].getCharacter(6).addDialog("talk", new String[] {"Nous vivant, vous ne pourrez pas entrer ! !"});
 		map[0].getCharacter(7).addDialog("collision", new String[] {"Attention à toi !"});
+		map[0].getCharacter(8).addDialog("collision", new String[] {"Attention à toi !"});
+		map[0].getCharacter(9).addDialog("collision", new String[] {"Attention à toi !"});
+		map[0].getCharacter(10).addDialog("collision", new String[] {"Attention à toi !"});
+		map[0].getCharacter(11).addDialog("collision", new String[] {"Attention à toi !"});
+		map[0].getCharacter(12).addDialog("collision", new String[] {"Attention à toi !"});
 		
 		map[1].getCharacter(0).addDialog("talk", new String[] {
 				"Comment osez-vous déranger sa majesté ?!", 
@@ -184,6 +189,11 @@ public class GameState extends GlobalState
 			g.drawString(chara.getName(), chara.getX() - ((chara.getName().length()*6)/2), chara.getY()-15);
 		}
 		
+		if (player.isShooting())
+		{
+			player.getShoot().render(g);
+		}
+		
 		map[currentMap].render(0, 0, map[currentMap].getLayerCount()-1);
     	
 		/*
@@ -219,11 +229,6 @@ public class GameState extends GlobalState
 		if (dialog != null)
 		{
 			drawDialog(g, dialog);
-		}
-		
-		if (player.isShooting())
-		{
-			player.getShoot().render(g);
 		}
 	}
 

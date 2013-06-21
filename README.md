@@ -27,6 +27,10 @@ Choses restant à faire
 * Implantation des autres map déjà réalisées
 * Implantation du scénario
 
+Bogues connus
+-------------
+* Transition entre le menu pause et l'écran de jeu décalée (à cause de la caméra)
+
 Tutoriels utilisés
 ------------------
 Afin de réaliser notre jeu, nous avons appris certaines techniques sur quelques tutoriels. Il est possible que notre code emprunte une partie ou en entier ces tutoriels.
