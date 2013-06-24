@@ -2,6 +2,7 @@ package com.timerunner.states;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -47,9 +48,12 @@ public class GameState extends GlobalState
     private Rectangle extVersInt;
     /** The box to go from the inside to the outside */
     private Rectangle intVersExt;
+    /** The box to go from the outside to the other map */
+    private Rectangle extVers2nde;
     
     /** Script variable  */
     private boolean hasTin = false;
+    private boolean commandRepaired = false;
 
 	/* (non-Javadoc)
 	 * @see com.timerunner.states.GlobalState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
@@ -60,11 +64,12 @@ public class GameState extends GlobalState
 		super.init(container, game);
 		this.shoot = new Sound("res/shoot.wav");
 		
-		currentMap = (Config.CURRENT_MAP.getValue() < 2 ? Config.CURRENT_MAP.getValue() : 0);
+		currentMap = (Config.CURRENT_MAP.getValue() < 3 ? Config.CURRENT_MAP.getValue() : 0);
 		player = new Player(Config.POS_X.getValue(), Config.POS_Y.getValue(), 32, 48, "pics/vx_chara02_c.png", 6, 4, "");
 		
-		map = new Map[] {new Map("res/map_moyen_age_exterieur.tmx"), new Map("res/map_moyen_age_interieur.tmx")};
+		map = new Map[] {new Map("res/map_moyen_age_exterieur.tmx"), new Map("res/map_moyen_age_interieur.tmx"), new Map("res/map_2de_guerre_mondiale.tmx")};
 		extVersInt = new Rectangle(1375, 927, map[0].getTileWidth()*4, map[0].getTileHeight());
+		extVers2nde = new Rectangle(50, 3090, map[0].getTileWidth()*2, map[0].getTileHeight()*2);
 		intVersExt = new Rectangle(970, 2510, map[0].getTileWidth()*16, map[0].getTileHeight());
 		// Map size = Tile Size * number of Tiles
 		mapWidth = map[currentMap].getWidth() * map[currentMap].getTileWidth(); 
@@ -97,6 +102,24 @@ public class GameState extends GlobalState
 		map[1].addCharacter(new Character(515, 137, 32, 48, "pics/vx_chara01_b.png", 0, 4, " Voleur"));
 		map[1].addCharacter(new MovingCharacter(74, 581, 32, 48, "pics/vx_chara02_c.png", 9, 4, "Nourrice 1"));
 		map[1].addCharacter(new MovingCharacter(493, 666, 32, 48, "pics/vx_chara02_c.png", 9, 4, "Nourrice 2"));
+		
+		Random random = new Random();
+		int vWidth = map[2].getWidth() * map[2].getTileWidth(),
+			vHeight = map[2].getHeight() * map[2].getTileHeight();
+		
+		// On créer une centaine de zombies. :)
+		for (int i = 0; i < 100; i++)
+		{
+			MovingCharacter vMC = new MovingCharacter(random.nextInt(vWidth), random.nextInt(vHeight), 32, 32, "pics/charchip01.png", 0, 0, "Zombie " + i);
+			if (map[2].isTileBlocked(vMC.getBox()))
+			{
+				i--;
+			}
+			else
+			{
+				map[2].addCharacter(vMC);
+			}
+		}
 		
 		map[currentMap].addCharacter(player);
 		
@@ -205,6 +228,7 @@ public class GameState extends GlobalState
 			g.setColor(Color.red);
 			g.draw(extVersInt);
 			g.draw(intVersExt);
+			g.draw(extVers2nde);
 			g.setColor(Color.white);
 			map[currentMap].drawRect(g);
 			g.drawString("Xp : " + player.getX() + ", Yp : " + player.getY(), 10 - camera.getTransX(), 25 - camera.getTransY());
@@ -271,6 +295,17 @@ public class GameState extends GlobalState
 			player.setPosX(1426);
 			player.setPosY(968);
 		}
+		else if (currentMap == 0 && commandRepaired && player.getBox().intersects(extVers2nde))
+		{
+			map[currentMap].removeCharacter(player);
+			currentMap = 2;
+			map[currentMap].addCharacter(player);
+			mapWidth = map[currentMap].getWidth() * map[currentMap].getTileWidth(); 
+			mapHeight = map[currentMap].getHeight() * map[currentMap].getTileHeight();
+			camera = new Camera(mapWidth, mapHeight);
+			player.setPosX(10);
+			player.setPosY(10);
+		}
 		
 		// On met en pause le jeu si la fenêtre n'a pas le focus
 		if (!container.hasFocus())
@@ -325,6 +360,7 @@ public class GameState extends GlobalState
 				if (vDialogs[0].equals("Boum !") && hasTin && dialog == null)
 				{
 					dialog = player.isEntityTalkable().getName() + " : Voilà j'ai fait fondre ton étain ! Tu as réparé la télécommande !";
+					commandRepaired = true;
 					return;
 				}
 				

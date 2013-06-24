@@ -45,6 +45,8 @@ public abstract class Entity implements Comparable<Entity>
     /** The dialogs */
 	private HashMap<String,String[]> aDialogs;
 	
+	private int transY;
+	
 	protected int statStrength;
 	protected int statLife;
 	protected int statDefense;
@@ -64,8 +66,9 @@ public abstract class Entity implements Comparable<Entity>
 	public Entity(float x, float y, int width, int height, String sprite, int spriteX, int spriteY, String pName) throws SlickException 
 	{
 		this.pos = new Vector2f(x,y);
-		this.box = new Rectangle(x, y+36, width, 12);
-		this.hitbox = new Rectangle(x, y, width, height);
+		this.transY = (int) Math.round(0.75*height);
+		this.box = new Rectangle(x, y + transY, width-2, (0.25f*height));
+		this.hitbox = new Rectangle(x, y, width-2, height);
 		this.sprite =  new SpriteSheet(sprite, width, height);
 		this.repos = new Image[]{
 			this.sprite.getSprite(spriteX+1, spriteY),//bas
@@ -154,7 +157,7 @@ public abstract class Entity implements Comparable<Entity>
 		{ // If both components aren't null, we reduce them to have constant speed on all directions
 			trans.set(trans.x / 1.5f, trans.y / 1.5f);
 		}
-		box.setLocation(pos.x+trans.x, pos.y+36+trans.y);
+		box.setLocation(pos.x+trans.x, pos.y+transY+trans.y);
 		hitbox.setLocation(pos.x+trans.x, pos.y+trans.y);
 		
 		if( (pos.x + trans.x) > 0 && (pos.x + trans.x) < (mapWidth-32) && !map.isTileBlocked(box) && !isEntityHere(box))
@@ -176,7 +179,7 @@ public abstract class Entity implements Comparable<Entity>
 		else
 		{
 			// On revient en arrière
-			box.setY(pos.y+36);
+			box.setY(pos.y+transY);
 			hitbox.setY(pos.y);
 			setRunning(false);
 		}
