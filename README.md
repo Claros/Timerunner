@@ -18,13 +18,13 @@ Choses faites
 * Gestion de la config des touches
 * Vérificateur de mises à jour
 * Sauvegarde de la progression
+* Implantation des maps
 
 Choses restant à faire
 ----------------------
 * Menu de configuration
 * Système de combat
 * Gestion des objets
-* Implantation des autres map déjà réalisées
 * Implantation du scénario
 
 Bogues connus
